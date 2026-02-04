@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src/output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>Gujarat EduPath</title>
+</head>
+
+<section class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+  <div class="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-8">
+
+    <!-- Header -->
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-4 h-5 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+        <!-- Calculator Icon -->
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 7h6m-6 4h6m-6 4h6M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" />
+        </svg> -->
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900">Enter Your Details</h2>
+    </div>
+
+    <p class="text-gray-600 mb-8">
+      Fill in the form below to get personalized college predictions
+    </p>
+
+    <!-- Form -->
+    <form class="space-y-6">
+
+      <!-- ACPC Rank -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-800 mb-2">
+          ACPC Rank <span class="text-red-500">*</span>
+        </label>
+        <input 
+          type="number" 
+          placeholder="e.g., 5000"
+          class="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <p class="text-sm text-gray-500 mt-2">
+          Enter your ACPC All India or Gujarat State rank
+        </p>
+      </div>
+
+      <!-- Category -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-800 mb-2">
+          Category <span class="text-red-500">*</span>
+        </label>
+        <select
+          class="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-600"
+        >
+          <option selected disabled>Select your category</option>
+          <option>General</option>
+          <option>OBC</option>
+          <option>SC</option>
+          <option>ST</option>
+          <option>EWS</option>
+        </select>
+      </div>
+
+      <!-- Preferred Branch -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-800 mb-2">
+          Preferred Branch <span class="text-red-500">*</span>
+        </label>
+        <select
+          class="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-600"
+        >
+          <option selected disabled>Select your preferred branch</option>
+          <option>Computer Engineering</option>
+          <option>Information Technology</option>
+          <option>Mechanical Engineering</option>
+          <option>Electrical Engineering</option>
+          <option>Civil Engineering</option>
+          <option>Electronics & Communication</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="pt-4">
+        <button
+          type="submit"
+          class="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-black to-gray-900 text-white py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition"
+        >
+          <!-- Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m2 8H7a2 2 0 01-2-2V6a2 2 0 012-2h6l6 6v8a2 2 0 01-2 2z" />
+          </svg>
+          Show My Colleges
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
