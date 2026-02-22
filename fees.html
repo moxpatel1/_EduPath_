@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fees + Colleges + Scholarships</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-slate-900">
+    <nav class="bg-white-500 flex justify-between items-center p-5 text-black h-20">
+  <div class="logo font-bold">
+    <img src="https://copilot.microsoft.com/th/id/BCO.e145baf0-053b-4fa6-b978-f5c6b4c2dcb9.png" class="h-16 w-auto" alt="Description of image">
+  </div>
+
+  <ul class="flex space-x-4 text-black">
+    <li>
+      <a href="index.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="predictcollege.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+        Predict college
+      </a>
+    </li>
+    <li>
+      <a href="admission_guidance.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+        Admission Guide
+      </a>
+    </li>
+    <li>
+      <a href="fees.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+        Fees/Scholarships
+      </a>
+    </li>
+    <li>
+      <a href="login.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+        Login
+      </a>
+    </li>
+    <li>
+      <a href="signup.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+        Signup
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <!-- ================= FEES COMPARISON SECTION ================= -->
+  <section class="px-4 py-12">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold">Fees Comparison</h1>
+        <p class="mt-2 text-slate-500">
+          Compare fees across government and private engineering colleges in Gujarat
+        </p>
+      </div>
+
+      <!-- Cards -->
+      <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+
+        <!-- Government Card -->
+        <div class="rounded-2xl border border-blue-200 bg-white shadow-sm overflow-hidden">
+          <div class="bg-blue-50 px-6 py-5">
+            <h2 class="text-lg font-bold text-blue-900">Government Colleges</h2>
+            <p class="text-sm text-slate-500">Lower fees, high ROI</p>
+          </div>
+
+          <div class="px-6 py-6 space-y-5">
+
+            <div class="rounded-xl bg-blue-50 border border-blue-100 p-5">
+              <p class="text-sm text-slate-600">Average Annual Fees</p>
+              <p class="mt-2 text-4xl font-extrabold text-blue-700">₹60,375</p>
+              <p class="text-xs text-slate-500">Per year (Day Scholar)</p>
+            </div>
+
+            <div class="rounded-xl bg-emerald-50 border border-emerald-100 p-5">
+              <p class="text-sm text-slate-600">4-Year Total Cost</p>
+              <p class="mt-2 text-3xl font-extrabold text-emerald-600">₹241,500</p>
+            </div>
+
+            <div>
+              <p class="text-sm font-semibold">Hostel + Mess (Annual)</p>
+              <p class="mt-2 text-2xl font-extrabold">₹32,375</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Private Card -->
+        <div class="rounded-2xl border border-violet-200 bg-white shadow-sm overflow-hidden">
+          <div class="bg-violet-50 px-6 py-5">
+            <h2 class="text-lg font-bold text-violet-900">Private Colleges</h2>
+            <p class="text-sm text-slate-500">Better facilities, higher fees</p>
+          </div>
+
+          <div class="px-6 py-6 space-y-5">
+
+            <div class="rounded-xl bg-violet-50 border border-violet-100 p-5">
+              <p class="text-sm text-slate-600">Average Annual Fees</p>
+              <p class="mt-2 text-4xl font-extrabold text-violet-700">₹158,500</p>
+              <p class="text-xs text-slate-500">Per year (Day Scholar)</p>
+            </div>
+
+            <div class="rounded-xl bg-orange-50 border border-orange-100 p-5">
+              <p class="text-sm text-slate-600">4-Year Total Cost</p>
+              <p class="mt-2 text-3xl font-extrabold text-orange-600">₹634,000</p>
+            </div>
+
+            <div>
+              <p class="text-sm font-semibold">Hostel + Mess (Annual)</p>
+              <p class="mt-2 text-2xl font-extrabold">₹87,500</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= COLLEGE-WISE TABLE SECTION ================= -->
+  <section class="px-4 pb-12">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+
+        <h2 class="text-lg font-bold">College-wise Fee Structure</h2>
+        <p class="mt-1 text-sm text-slate-500">
+          Annual fees for all colleges (in ₹)
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="min-w-full text-sm">
+
+            <thead class="bg-slate-50 text-left text-slate-600">
+              <tr>
+                <th class="px-5 py-4 font-semibold">College</th>
+                <th class="px-5 py-4 font-semibold">Type</th>
+                <th class="px-5 py-4 font-semibold">Tuition</th>
+                <th class="px-5 py-4 font-semibold">Other</th>
+                <th class="px-5 py-4 font-semibold">Day Scholar</th>
+                <th class="px-5 py-4 font-semibold text-right">With Hostel</th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-slate-200">
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-5 py-5">
+                  <div class="font-semibold">LDCE</div>
+                  <div class="text-xs text-slate-500">Ahmedabad</div>
+                </td>
+                <td class="px-5 py-5">
+                  <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-200">
+                    Government
+                  </span>
+                </td>
+                <td class="px-5 py-5">₹45,000</td>
+                <td class="px-5 py-5">₹5,000</td>
+                <td class="px-5 py-5 font-semibold">₹50,000</td>
+                <td class="px-5 py-5 text-right font-semibold">₹82,000</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-5 py-5">
+                  <div class="font-semibold">SVNIT</div>
+                  <div class="text-xs text-slate-500">Surat</div>
+                </td>
+                <td class="px-5 py-5">
+                  <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-200">
+                    Government
+                  </span>
+                </td>
+                <td class="px-5 py-5">₹85,000</td>
+                <td class="px-5 py-5">₹8,000</td>
+                <td class="px-5 py-5 font-semibold">₹93,000</td>
+                <td class="px-5 py-5 text-right font-semibold">₹133,000</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-5 py-5">
+                  <div class="font-semibold">GEC Gandhinagar</div>
+                  <div class="text-xs text-slate-500">Gandhinagar</div>
+                </td>
+                <td class="px-5 py-5">
+                  <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-200">
+                    Government
+                  </span>
+                </td>
+                <td class="px-5 py-5">₹45,000</td>
+                <td class="px-5 py-5">₹4,500</td>
+                <td class="px-5 py-5 font-semibold">₹49,500</td>
+                <td class="px-5 py-5 text-right font-semibold">₹79,000</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-5 py-5">
+                  <div class="font-semibold">Nirma University</div>
+                  <div class="text-xs text-slate-500">Ahmedabad</div>
+                </td>
+                <td class="px-5 py-5">
+                  <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700 border border-violet-200">
+                    Private
+                  </span>
+                </td>
+                <td class="px-5 py-5">₹165,000</td>
+                <td class="px-5 py-5">₹15,000</td>
+                <td class="px-5 py-5 font-semibold">₹180,000</td>
+                <td class="px-5 py-5 text-right font-semibold">₹280,000</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-5 py-5">
+                  <div class="font-semibold">DDU</div>
+                  <div class="text-xs text-slate-500">Nadiad</div>
+                </td>
+                <td class="px-5 py-5">
+                  <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700 border border-violet-200">
+                    Private
+                  </span>
+                </td>
+                <td class="px-5 py-5">₹125,000</td>
+                <td class="px-5 py-5">₹12,000</td>
+                <td class="px-5 py-5 font-semibold">₹137,000</td>
+                <td class="px-5 py-5 text-right font-semibold">₹212,000</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-5 py-5">
+                  <div class="font-semibold">GEC Rajkot</div>
+                  <div class="text-xs text-slate-500">Rajkot</div>
+                </td>
+                <td class="px-5 py-5">
+                  <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-200">
+                    Government
+                  </span>
+                </td>
+                <td class="px-5 py-5">₹45,000</td>
+                <td class="px-5 py-5">₹4,000</td>
+                <td class="px-5 py-5 font-semibold">₹49,000</td>
+                <td class="px-5 py-5 text-right font-semibold">₹77,000</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SCHOLARSHIP INFORMATION SECTION ================= -->
+  <section class="px-4 pb-16">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-extrabold">Scholarship Information</h2>
+        <p class="mt-2 text-slate-500">
+          Explore scholarships to reduce your education costs
+        </p>
+      </div>
+
+      <!-- Important Info Box -->
+      <div class="rounded-xl border border-blue-200 bg-blue-50 p-6">
+        <div class="flex gap-3">
+          <div class="mt-1">
+            <!-- info icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M12 18a6 6 0 100-12 6 6 0 000 12z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-blue-900">Important Information</p>
+            <ul class="mt-2 list-disc pl-5 text-sm text-blue-900/80 space-y-1">
+              <li>Apply for scholarships immediately after getting admission</li>
+              <li>Most scholarships require online application through Digital Gujarat portal</li>
+              <li>Keep income certificate, caste certificate (if applicable), and bank details ready</li>
+              <li>You can apply for multiple scholarships if eligible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-700">
+            <!-- medal -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 14l4-4m0 0l4 4m-4-4v10M8 10l4 4m0 0l4-4M8 10V4a2 2 0 012-2h4a2 2 0 012 2v6" />
+            </svg>
+          </div>
+          <p class="mt-3 text-2xl font-extrabold">6</p>
+          <p class="text-xs text-slate-500">Scholarships</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+            <!-- currency -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-10v10m0-10c1.657 0 3 .895 3 2m-3-2c-1.657 0-3 .895-3 2" />
+            </svg>
+          </div>
+          <p class="mt-3 text-2xl font-extrabold">₹1L+</p>
+          <p class="text-xs text-slate-500">Max Benefits</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-violet-50 text-violet-700">
+            <!-- users -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m8-4a4 4 0 10-8 0 4 4 0 008 0z" />
+            </svg>
+          </div>
+          <p class="mt-3 text-2xl font-extrabold">All</p>
+          <p class="text-xs text-slate-500">Categories</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-orange-50 text-orange-700">
+            <!-- trend up -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 7h8m0 0v8m0-8L13 15l-4-4-6 6" />
+            </svg>
+          </div>
+          <p class="mt-3 text-2xl font-extrabold">50%+</p>
+          <p class="text-xs text-slate-500">Fee Coverage</p>
+        </div>
+      </div>
+
+      <!-- Filter line -->
+      <div class="mt-8 flex items-center gap-3">
+        <span class="inline-flex items-center rounded-lg bg-blue-100 px-3 py-2 text-xs font-semibold text-blue-800">
+          All Category
+        </span>
+        <span class="text-xs text-slate-500">3 scholarships available</span>
+      </div>
+
+      <!-- Scholarship cards -->
+      <div class="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <!-- Card 1 -->
+        <div class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold">Mukhyamantri Yuva Swalamban Yojana (MYSY)</h3>
+              <p class="text-xs text-slate-500 mt-1">Government of Gujarat</p>
+            </div>
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+              🎖️
+            </span>
+          </div>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Benefits</p>
+          <div class="mt-2 rounded-lg bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-800">
+            ₹50,000 to ₹1,00,000 per year
+          </div>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Eligibility Criteria</p>
+          <ul class="mt-2 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> Gujarat domicile</li>
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> Family income below ₹6 lakh/year</li>
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> Minimum 60% in 12th</li>
+          </ul>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Applicable For</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">OPEN</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">SEBC</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">SC</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">ST</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold">Digital Gujarat Scholarship</h3>
+              <p class="text-xs text-slate-500 mt-1">Government of Gujarat</p>
+            </div>
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+              🎖️
+            </span>
+          </div>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Benefits</p>
+          <div class="mt-2 rounded-lg bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-800">
+            Full tuition fee + ₹10,000 for books
+          </div>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Eligibility Criteria</p>
+          <ul class="mt-2 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> Gujarat domicile</li>
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> Family income below ₹4.5 lakh/year</li>
+          </ul>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Applicable For</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">OPEN</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">SEBC</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">SC</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">ST</span>
+          </div>
+        </div>
+
+        <!-- Card 3 (single left like screenshot) -->
+        <div class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm lg:col-span-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold">Merit Scholarship</h3>
+              <p class="text-xs text-slate-500 mt-1">ACPC</p>
+            </div>
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+              🎖️
+            </span>
+          </div>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Benefits</p>
+          <div class="mt-2 rounded-lg bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-800">
+            ₹20,000 per year
+          </div>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Eligibility Criteria</p>
+          <ul class="mt-2 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> Top 10% in ACPC rank</li>
+            <li class="flex gap-2"><span class="text-emerald-600">✔</span> No income limit</li>
+          </ul>
+
+          <p class="mt-5 text-xs font-semibold text-slate-600">Applicable For</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">OPEN</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">SEBC</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">SC</span>
+            <span class="rounded-full border px-3 py-1 text-xs font-semibold">ST</span>
+          </div>
+        </div>
+
+        <!-- empty column space like screenshot -->
+        <div class="hidden lg:block"></div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
