@@ -7,11 +7,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="flex items-center justify-center min-h-screen"
+<body class="flex flex-col items-center justify-center min-h-screen"
       style="background-image: url('media/images/Copilot_20260201_113525.png'); background-size: cover; background-position: center;">
-    <div class="bg-white shadow-md w-96 mt-40 rounded-lg">
+      
+    <!-- Heading OUTSIDE the form box -->
+    <h1 class="text-4xl font-bold text-white mb-6 drop-shadow-lg">
+        Welcome to EduPath
+    </h1>
+
+    <div class="bg-white shadow-md w-96 rounded-lg">
         <div class="p-6">
         <h3 class="text-2xl font-bold text-center mb-6">Signup</h3>
+
         <form id="signupForm" action="index.html" method="get">
             <input type="text" id="username" placeholder="Username" class="bg-white rounded-lg border p-3 w-full mb-4" required>
             <input type="email" id="email" placeholder="Email Address" class="bg-white rounded-lg border p-3 mb-4 w-full" required>
@@ -19,7 +26,12 @@
             <input type="password" id="confirmPassword" placeholder="Confirm Password" class="bg-white rounded-lg border p-3 w-full mb-4" minlength="8" required>
             <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 mb-4">Create Account</button>
         </form>
-        <h3 class="text-gray-500 mt-4"> Already have an account? <a href="login.html" class="text-blue-600 hover:underline">Log in</a> </h3>
+
+        <h3 class="text-gray-500 mt-4">
+            Already have an account?
+            <a href="login.html" class="text-blue-600 hover:underline">Log in</a>
+        </h3>
+
         </div>
     </div>
 
@@ -30,14 +42,12 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
 
-    // Username check
     if (username.length < 3) {
         alert("Username must be at least 3 characters long.");
         event.preventDefault();
         return;
     }
 
-    // Email format check
     let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (!email.match(emailPattern)) {
         alert("Please enter a valid email address.");
@@ -45,14 +55,12 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         return;
     }
 
-    // Password length check
     if (password.length < 8) {
         alert("Password must be at least 8 characters long.");
         event.preventDefault();
         return;
     }
 
-    // Confirm password check
     if (password !== confirmPassword) {
         alert("Passwords do not match.");
         event.preventDefault();
