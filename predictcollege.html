@@ -13,8 +13,8 @@
 <body class="bg-slate-100">
 
   <nav class="bg-white-500 flex justify-between items-center p-5 text-black h-20 shadow-lg">
-  <div class="logo font-bold">
-    <img href="index.html" src="media/images/logo1.png" class="h-32 w-32" alt="Description of image">
+<div class="logo font-bold">
+    <a href="index.html"><img href="index.html" src="media/images/logo1.png" class="h-30 w-32" alt="Description of image"></a>
   </div>
 
   <ul class="flex space-x-4 text-black">
@@ -97,7 +97,7 @@
       </p>
 
       <!-- Form -->
-      <form class="space-y-6">
+      <form id="predict-form" class="space-y-6">
 
         <!-- ACPC Rank -->
         <div>
@@ -105,9 +105,13 @@
             ACPC Rank <span class="text-red-500">*</span>
           </label>
           <input 
+            id="acpc-rank"
+            name="acpcRank"
             type="number" 
             placeholder="e.g., 5000"
+            min="1"
             class="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
           <p class="text-sm text-gray-500 mt-2">
             Enter your ACPC All India or Gujarat State rank
@@ -120,9 +124,12 @@
             Category <span class="text-red-500">*</span>
           </label>
           <select
+            id="category"
+            name="category"
             class="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-600"
+            required
           >
-            <option selected disabled>Select your category</option>
+            <option value="" selected disabled>Select your category</option>
             <option>General</option>
             <option>OBC</option>
             <option>SC</option>
@@ -137,9 +144,12 @@
             Preferred Branch <span class="text-red-500">*</span>
           </label>
           <select
+            id="branch"
+            name="branch"
             class="w-full bg-gray-100 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-600"
+            required
           >
-            <option selected disabled>Select your preferred branch</option>
+            <option value="" selected disabled>Select your preferred branch</option>
             <option>Computer Engineering</option>
             <option>Information Technology</option>
             <option>Mechanical Engineering</option>
@@ -151,7 +161,7 @@
 
         <!-- Submit Button -->
         <div class="pt-4">
-          <button href="showmycolleges.html"
+          <button
             type="submit"
             class="w-full flex items-center justify-center bg-gradient-to-r from-black to-gray-900 text-white py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition"
           >
@@ -162,6 +172,26 @@
       </form>
     </div>  
   </section>
+
+  <script>
+    const form = document.getElementById('predict-form');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const rank = Number(document.getElementById('acpc-rank').value);
+      const category = document.getElementById('category').value;
+      const branch = document.getElementById('branch').value;
+
+      if (!rank || !category || !branch) {
+        alert('Please fill all fields before proceeding.');
+        return;
+      }
+
+      // Save criteria for the next page
+      localStorage.setItem('edupathPredictionInput', JSON.stringify({ rank, category, branch }));
+      window.location.href = 'showmycolleges.html';
+    });
+  </script>
 
 </body>
 </html>
