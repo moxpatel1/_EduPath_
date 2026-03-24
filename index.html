@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="src/output.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <title>Gujarat EduPath</title>
 </head>
@@ -55,13 +56,13 @@
   <img 
     src="media\images\forntimage.jpg" 
     alt="Sample Image" 
-    class="w-full h-full object-cover"
+    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
   >
 
   <!-- Light blue transparent overlay -->
   <div class="absolute inset-0 bg-blue-500/70"></div>
 
-  <div class="absolute inset-0 flex items-center justify-between p-4 bottom-30 ml-16  ">
+  <div class="absolute inset-0 flex items-center justify-between p-4 bottom-30 ml-16" data-aos="fade-right">
     <div>
     <h1 class="text-gray-100 text-5xl font-bold font-size-1000 drop-shadow-lg">Find Your Perfect Engineering College</h1>
     <p class="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed mt-4">ACPC College Predictor & Guidance Portal
@@ -90,7 +91,7 @@
 
 </main>
 
-<div class="grid grid-cols-4 gap-8 mt-16 px-4">
+<div class="grid grid-cols-4 gap-8 mt-16 px-4" data-aos="fade-up">
 
   <!-- Card 1 -->
   <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
@@ -147,7 +148,7 @@
 
 </div>
 
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center" data-aos="fade-in">
 
     <button class="bg-blue-600 text-white m-10 p-10 px-6 py-2 rounded">
         Complete Solution
@@ -162,7 +163,7 @@
         you need to succeed
     </p>
 
-    <section class="bg-gray-50 py-16 px-6">
+    <section class="bg-gray-50 py-16 px-6" data-aos="fade-up">
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
 
     <!-- Card 1 -->
@@ -228,9 +229,43 @@
   </div>
 </section>
 
+  <!-- Top Study Places -->
+  <section class="py-16 px-6 bg-slate-50" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Top Study Places in Gujarat</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <a href="ahmedabad.html" class="h-40 rounded-xl bg-white shadow-md flex items-center justify-center text-center p-4 hover:scale-105 transition-transform duration-300">
+          <div>
+            <p class="text-xl font-semibold">Ahmedabad</p>
+          </div>
+        </a>
+        <a href="gandhinagar.html" class="h-40 rounded-xl bg-white shadow-md flex items-center justify-center text-center p-4 hover:scale-105 transition-transform duration-300">
+          <div>
+            <p class="text-xl font-semibold">Gandhinagar</p>
+          </div>
+        </a>
+        <a href="anand.html" class="h-40 rounded-xl bg-white shadow-md flex items-center justify-center text-center p-4 hover:scale-105 transition-transform duration-300">
+          <div>
+            <p class="text-xl font-semibold">Anand</p>
+          </div>
+        </a>
+        <a href="surat.html" class="h-40 rounded-xl bg-white shadow-md flex items-center justify-center text-center p-4 hover:scale-105 transition-transform duration-300">
+          <div>
+            <p class="text-xl font-semibold">Surat</p>
+          </div>
+        </a>
+        <a href="vadodara.html" class="h-40 rounded-xl bg-white shadow-md flex items-center justify-center text-center p-4 hover:scale-105 transition-transform duration-300">
+          <div>
+            <p class="text-xl font-semibold">Vadodara</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
 
-<footer class="bg-slate-900 text-gray-300 py-14 px-10 w-full">
+<footer class="bg-slate-900 text-gray-300 py-14 px-10 w-full" data-aos="fade-in">
   
   <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
 
@@ -288,6 +323,10 @@
 
 
 </div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html> 
 
