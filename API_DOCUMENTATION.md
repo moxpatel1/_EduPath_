@@ -19,9 +19,9 @@ The server will run on `http://localhost:5000`
 ---
 
 ## Database Connection
-- **MongoDB Cluster**: Connected to `acpc-cluster` on MongoDB Atlas
-- **Database Name**: `acpc`
-- **Connection Status**: Logs "MongoDB Connected" when successfully connected
+- Set `MONGO_URI` in `.env` (MongoDB Atlas or local MongoDB).
+- Default (if `MONGO_URI` is not set): `mongodb://127.0.0.1:27017/acpc`
+- **Connection Status**: Logs "MongoDB connected (...)" when successfully connected
 
 ---
 
