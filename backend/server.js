@@ -1,7 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 const authRoutes = require("./routes/auth");
+const collegeRoutes = require("./routes/college");
+
+// Load environment variables from .env (Node.js 20.6+/22+ feature). Safe to ignore if missing.
+try {
+  if (typeof process.loadEnvFile === "function") {
+    // Load from repo root so it works even if you run `node server.js` from /backend.
+    process.loadEnvFile(path.resolve(__dirname, "..", ".env"));
+  }
+} catch (err) {
+  if (!err || err.code !== "ENOENT") {
+    console.warn("Warning: failed to load .env:", err?.message || err);
+  }
+}
 
 const app = express();
 
@@ -22,25 +36,29 @@ app.get("/", (req,res)=>{
 // Authentication Routes
 app.use("/api/auth", authRoutes);
 
+// College Routes
+app.use("/api", collegeRoutes);
+
 // MongoDB Connection - Wait before starting server
 async function startServer() {
   try {
-    const mongoURI = "mongodb://localhost:27017/acpc";
+    const PORT = Number.parseInt(process.env.PORT, 10) || 5000;
+    const mongoURI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/acpc";
     
     await mongoose.connect(mongoURI, {
       serverSelectionTimeoutMS: 10000,
       socketTimeoutMS: 45000
     });
     
-    console.log("✓ MongoDB Connected Successfully");
+    console.log(`MongoDB connected (${mongoose.connection.host}/${mongoose.connection.name})`);
     
     // Only listen after DB connects
-    app.listen(5000, () => {
-      console.log("✓ Server running on port 5000");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (err) {
-    console.error("✗ MongoDB Connection Error:", err.message);
-    console.log("⚠ Make sure MongoDB is running locally on port 27017");
+    console.error("MongoDB connection error:", err.message);
+    console.log("Tip: set MONGO_URI in .env (local MongoDB or MongoDB Atlas connection string).");
     process.exit(1);
   }
 }
