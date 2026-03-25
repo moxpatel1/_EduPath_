@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gujarat EduPath</title>
+  <title>Gujarat EduPath - Show My Colleges</title>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,48 +14,291 @@
 
   <nav class="bg-white-500  flex justify-between items-center p-5 text-black h-20 shadow-lg">
   <div class="logo font-bold">
-    <img href="index.html" src="https://copilot.microsoft.com/th/id/BCO.e145baf0-053b-4fa6-b978-f5c6b4c2dcb9.png" class="h-32 w-32" alt="Description of image">
+    <a href="index.html"><img src="media/images/logo1.png" class="h-32 w-32" alt="Description of image"></a>
   </div>
 
   <ul class="flex space-x-4 text-black">
     <li>
-      <a href="index.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
-        Home
-      </a>
+      <a href="index.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">Home</a>
     </li>
     <li>
-      <a href="predictcollege.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
-        Predict college
-      </a>
+      <a href="predictcollege.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">Predict college</a>
     </li>
     <li>
-      <a href="admission_guidance.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
-        Admission Guide
-      </a>
+      <a href="admission_guidance.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">Admission Guide</a>
     </li>
     <li>
-      <a href="fees.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
-        Fees/Scholarships
-      </a>
+      <a href="fees.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">Fees/Scholarships</a>
     </li>
     <li>
-      <a href="login.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
-        Login
-      </a>
+      <a href="login.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">Login</a>
     </li>
     <li>
-      <a href="signup.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
-        Signup
-      </a>
+      <a href="signup.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">Signup</a>
     </li>
   </ul>
 </nav>
 
-<section>
-    <div>
-        <h1 class="text-3xl font-bold text-gray-900 mb-8 p-6">Your Collge Predictions</h1>
+  <section class="min-h-screen p-6">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Predicted Colleges</h1>
+          <p class="text-gray-600 mt-2" id="criteria-text">Loading your prediction criteria...</p>
+        </div>
+        <button id="reset-btn" class="rounded-lg bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition">Change input</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <select id="filter-branch" class="border border-gray-300 rounded-lg p-3">
+          <option value="">All branches</option>
+        </select>
+        <select id="filter-city" class="border border-gray-300 rounded-lg p-3">
+          <option value="">All cities</option>
+        </select>
+        <select id="filter-hostel" class="border border-gray-300 rounded-lg p-3">
+          <option value="">Any hostel</option>
+          <option value="both">Boys + Girls</option>
+          <option value="boys">Boys only</option>
+          <option value="girls">Girls only</option>
+        </select>
+        <select id="filter-transport" class="border border-gray-300 rounded-lg p-3">
+          <option value="">Any transport</option>
+          <option value="yes">Transport Available</option>
+          <option value="no">Transport Not Available</option>
+        </select>
+      </div>
+
+      <div class="overflow-x-auto bg-white rounded-xl shadow">
+        <table class="w-full text-left min-w-[960px]">
+          <thead class="bg-slate-200 text-gray-700">
+            <tr>
+              <th class="px-4 py-3">College</th>
+              <th class="px-4 py-3">Location</th>
+              <th class="px-4 py-3">Branch</th>
+              <th class="px-4 py-3">Cutoff Rank</th>
+              <th class="px-4 py-3">Prediction</th>
+              <th class="px-4 py-3">Probability</th>
+              <th class="px-4 py-3">Hostel Boys</th>
+              <th class="px-4 py-3">Hostel Girls</th>
+              <th class="px-4 py-3">Transportation</th>
+              <th class="px-4 py-3">Fees per Year</th>
+            </tr>
+          </thead>
+          <tbody id="college-list" class="divide-y divide-gray-200">
+          </tbody>
+        </table>
+      </div>
+
+      <p id="no-results" class="mt-6 text-center text-gray-500 hidden">No colleges match your criteria yet. Try relaxing filters.</p>
     </div>
-</section>
+  </section>
+
+  <script>
+    let allColleges = [];
+    let availableBranches = [];
+    let availableCities = [];
+
+    const criteriaText = document.getElementById('criteria-text');
+    const collegeList = document.getElementById('college-list');
+    const noResults = document.getElementById('no-results');
+    const filterBranch = document.getElementById('filter-branch');
+    const filterCity = document.getElementById('filter-city');
+    const filterHostel = document.getElementById('filter-hostel');
+    const filterTransport = document.getElementById('filter-transport');
+    const resetBtn = document.getElementById('reset-btn');
+
+    const saved = localStorage.getItem('edupathPredictionInput');
+    let selected = { rank: null, category: '', branch: '' };
+
+    if (saved) {
+      selected = JSON.parse(saved);
+      criteriaText.textContent = `Your ACPC Rank: ${selected.rank} | Category: ${selected.category} | Preferred Branch: ${selected.branch}`;
+    } else {
+      criteriaText.textContent = 'No prediction input found. You can always go back and enter your details.';
+    }
+
+    // Fetch colleges from local JSON file
+    async function loadColleges() {
+      try {
+        const response = await fetch('colleges.json');
+        if (!response.ok) {
+          throw new Error('colleges.json not found');
+        }
+        const data = await response.json();
+        allColleges = data;
+        availableBranches = [...new Set(data.map(c => c.branch))].filter(b => b).sort();
+        availableCities = [...new Set(data.map(c => c.city))].filter(c => c).sort();
+        generateOptions();
+        applyFilters();
+      } catch (error) {
+        console.error('Error loading colleges:', error);
+        collegeList.innerHTML = '<tr><td colspan="10" class="px-4 py-3 text-center text-red-500">Error: colleges.json not found. Run: node convertExcelToJSON.js first</td></tr>';
+      }
+    }
+
+    function generateOptions() {
+      // Clear existing options
+      filterBranch.innerHTML = '<option value="">All branches</option>';
+      filterCity.innerHTML = '<option value="">All cities</option>';
+
+      availableBranches.forEach(branch => {
+        const opt = document.createElement('option');
+        opt.value = branch;
+        opt.textContent = branch;
+        filterBranch.appendChild(opt);
+      });
+
+      availableCities.forEach(city => {
+        const opt = document.createElement('option');
+        opt.value = city;
+        opt.textContent = city;
+        filterCity.appendChild(opt);
+      });
+    }
+
+    function applyFilters() {
+      const branchValue = filterBranch.value;
+      const cityValue = filterCity.value;
+      const hostelValue = filterHostel.value;
+      const transportValue = filterTransport.value;
+
+      let filtered = allColleges.filter(college => {
+        let pass = true;
+        
+        // Filter by selected branch (from filter dropdown)
+        if (branchValue) {
+          pass = pass && college.branch === branchValue;
+        }
+        
+        // Filter by city
+        if (cityValue) {
+          pass = pass && college.city === cityValue;
+        }
+
+        // Filter by hostel
+        if (hostelValue === 'both') {
+          pass = pass && college.hostelBoys && college.hostelGirls;
+        } else if (hostelValue === 'boys') {
+          pass = pass && college.hostelBoys;
+        } else if (hostelValue === 'girls') {
+          pass = pass && college.hostelGirls;
+        }
+
+        // Filter by transport
+        if (transportValue) {
+          pass = pass && college.transportation === (transportValue === 'yes');
+        }
+
+        return pass;
+      });
+
+      // Apply rank-based prediction and sorting
+      if (selected.rank) {
+        const userRank = parseInt(selected.rank);
+        const SAFE_MARGIN = 500;
+
+        filtered = filtered.map(college => {
+          const difference = Math.abs(college.cutoffRank - userRank);
+          let prediction = 'Low';
+          let probability = 0;
+
+          if (userRank >= college.cutoffRank) {
+            if (difference <= SAFE_MARGIN) {
+              prediction = 'High';
+              probability = 100 - (difference / SAFE_MARGIN * 30);
+            } else if (difference <= SAFE_MARGIN * 1.5) {
+              prediction = 'Medium-High';
+              probability = 70 - (difference / (SAFE_MARGIN * 1.5) * 40);
+            } else {
+              prediction = 'Medium';
+              probability = 40 - (difference / (SAFE_MARGIN * 2) * 30);
+            }
+          } else {
+            prediction = 'Low';
+            probability = Math.max(0, 20 - (difference / SAFE_MARGIN * 20));
+          }
+
+          return {
+            ...college,
+            rankDifference: difference,
+            prediction: prediction,
+            probability: Math.max(0, Math.round(probability))
+          };
+        });
+
+        // Sort by prediction then by rank difference
+        const predictionOrder = { 'High': 0, 'Medium-High': 1, 'Medium': 2, 'Low': 3 };
+        filtered.sort((a, b) => {
+          const aOrder = predictionOrder[a.prediction] || 4;
+          const bOrder = predictionOrder[b.prediction] || 4;
+          if (aOrder !== bOrder) return aOrder - bOrder;
+          return a.rankDifference - b.rankDifference;
+        });
+      } else {
+        // Sort by cutoff rank if no user rank
+        filtered.sort((a, b) => a.cutoffRank - b.cutoffRank);
+      }
+
+      renderList(filtered);
+    }
+
+    function renderList(colleges) {
+      collegeList.innerHTML = '';
+      if (!colleges.length) {
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      colleges.forEach(college => {
+        const tr = document.createElement('tr');
+        
+        let predictionColor = '';
+        if (college.prediction === 'High') {
+          predictionColor = 'bg-green-100 text-green-800 font-semibold';
+        } else if (college.prediction === 'Medium-High' || college.prediction === 'Medium') {
+          predictionColor = 'bg-yellow-100 text-yellow-800 font-semibold';
+        } else {
+          predictionColor = 'bg-red-100 text-red-800';
+        }
+
+        const probabilityBar = college.probability ? `
+          <div class="w-16 bg-gray-200 rounded-full h-2">
+            <div class="bg-blue-600 h-2 rounded-full" style="width: ${college.probability}%"></div>
+          </div>
+          <span class="text-sm font-semibold">${college.probability}%</span>
+        ` : '<span class="text-sm">N/A</span>';
+
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-medium">${college.instituteName}</td>
+          <td class="px-4 py-3">${college.city}</td>
+          <td class="px-4 py-3">${college.branch}</td>
+          <td class="px-4 py-3 font-semibold">${college.cutoffRank}</td>
+          <td class="px-4 py-3"><span class="px-3 py-1 rounded-full text-sm ${predictionColor}">${college.prediction || 'N/A'}</span></td>
+          <td class="px-4 py-3"><div class="flex items-center gap-2">${probabilityBar}</div></td>
+          <td class="px-4 py-3">${college.hostelBoys ? '✓ Yes' : '✗ No'}</td>
+          <td class="px-4 py-3">${college.hostelGirls ? '✓ Yes' : '✗ No'}</td>
+          <td class="px-4 py-3">${college.transportation ? 'Available' : 'Not Available'}</td>
+          <td class="px-4 py-3">₹${college.fees}</td>
+        `;
+        collegeList.appendChild(tr);
+      });
+    }
+
+    // Initialize
+    loadColleges();
+
+    // Add event listeners for filters
+    [filterBranch, filterCity, filterHostel, filterTransport].forEach(element => {
+      element.addEventListener('change', applyFilters);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      localStorage.removeItem('edupathPredictionInput');
+      window.location.href = 'predictcollege.html';
+    });
+  </script>
 
 </body>
 </html>
