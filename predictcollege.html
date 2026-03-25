@@ -10,16 +10,16 @@
   <link href="src/output.css" rel="stylesheet">
 </head>
 
-<body class="bg-blue-100">
+<body class="bg-slate-100">
 
-  <nav class="bg-white-500 flex justify-between items-center p-5 text-black h-20">
+  <nav class="bg-white-500 flex justify-between items-center p-5 text-black h-20 shadow-lg">
   <div class="logo font-bold">
     <img href="index.html" src="https://copilot.microsoft.com/th/id/BCO.e145baf0-053b-4fa6-b978-f5c6b4c2dcb9.png" class="h-32 w-32" alt="Description of image">
   </div>
 
   <ul class="flex space-x-4 text-black">
     <li>
-      <a href="#" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
+      <a href="index.html" class="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition duration-300">
         Home
       </a>
     </li>
@@ -51,11 +51,31 @@
   </ul>
 </nav>
 
-  <section class="min-h-screen flex items-center justify-center p-6">
+  <section class="min-h-screen flex flex-col items-center justify-center p-6">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">College Predictor</h1>
+
+    <!-- how it work -->
+    <div class="text-card-foreground flex flex-col gap-6 rounded-xl border mb-6 border-blue-200 bg-blue-50">
+      <div class="px-6 [&:last-child]:pb-6 pt-6">
+        <div class="text-sm text-blue-900">
+          <p class="font-medium mb-1"><b>How it Works</b></p>
+          <ul>
+            <li>1.Based on previous year ACPC cutoff data (2024)</li>
+            <li>2.Predictions show High, Medium, and Low probability colleges</li>
+            <li>3.You can filter results by college type, city, and hostel availability</li>
+            <li>4.Compare multiple colleges before making your choice</li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-8">
 
       <!-- Header -->
+      
       <div class="flex items-center gap-3 mb-6">
+        
         <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600">
           <!-- Calculator Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" 
@@ -131,7 +151,7 @@
 
         <!-- Submit Button -->
         <div class="pt-4">
-          <button
+          <button href="showmycolleges.html"
             type="submit"
             class="w-full flex items-center justify-center bg-gradient-to-r from-black to-gray-900 text-white py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition"
           >
