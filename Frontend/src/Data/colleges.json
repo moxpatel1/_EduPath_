@@ -1,0 +1,178 @@
+[
+  {
+    "instituteName": "Indian Institute of Technology Bombay",
+    "city": "Mumbai",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 150,
+    "fees": "2,20,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "National Institute of Technology Surathkal",
+    "city": "Mangalore",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 450,
+    "fees": "1,60,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "Gujarat Technological University",
+    "city": "Ahmedabad",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 2100,
+    "fees": "1,40,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "Dharamsinh Desai University",
+    "city": "Nadiad",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 3500,
+    "fees": "1,80,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "Nirma University",
+    "city": "Ahmedabad",
+    "branch": "Information Technology",
+    "category": "General",
+    "cutoffRank": 1800,
+    "fees": "2,20,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "PDPU - Pandit Deendayal Petroleum University",
+    "city": "Gandhinagar",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 1500,
+    "fees": "1,90,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "Marwadi Education Foundation",
+    "city": "Rajkot",
+    "branch": "Information Technology",
+    "category": "General",
+    "cutoffRank": 5000,
+    "fees": "1,50,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "SVIT - Vasantrao Narayanan College",
+    "city": "Surat",
+    "branch": "Electronics & Communication",
+    "category": "General",
+    "cutoffRank": 4200,
+    "fees": "1,20,000",
+    "hostelBoys": true,
+    "hostelGirls": false,
+    "transportation": true
+  },
+  {
+    "instituteName": "Govt Engineering College Surat",
+    "city": "Surat",
+    "branch": "Civil Engineering",
+    "category": "General",
+    "cutoffRank": 8500,
+    "fees": "56,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": false
+  },
+  {
+    "instituteName": "Institute of Technology Nirma",
+    "city": "Ahmedabad",
+    "branch": "Mechanical Engineering",
+    "category": "General",
+    "cutoffRank": 2200,
+    "fees": "1,80,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "BVM Engineering College",
+    "city": "Vallabh Vidyanagar",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 3800,
+    "fees": "1,60,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "Parul University",
+    "city": "Vadodara",
+    "branch": "Information Technology",
+    "category": "General",
+    "cutoffRank": 6200,
+    "fees": "1,70,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "LDRP-ITR",
+    "city": "Gandhinagar",
+    "branch": "Computer Engineering",
+    "category": "General",
+    "cutoffRank": 4500,
+    "fees": "1,50,000",
+    "hostelBoys": true,
+    "hostelGirls": false,
+    "transportation": true
+  },
+  {
+    "instituteName": "Ahmedabad Institute of Technology",
+    "city": "Ahmedabad",
+    "branch": "Electrical Engineering",
+    "category": "General",
+    "cutoffRank": 3200,
+    "fees": "1,75,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  },
+  {
+    "instituteName": "Charotar University of Science and Technology",
+    "city": "Anand",
+    "branch": "Mechanical Engineering",
+    "category": "General",
+    "cutoffRank": 5800,
+    "fees": "1,60,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": false
+  },
+  {
+    "instituteName": "RK University",
+    "city": "Rajkot",
+    "branch": "Civil Engineering",
+    "category": "General",
+    "cutoffRank": 7200,
+    "fees": "1,40,000",
+    "hostelBoys": true,
+    "hostelGirls": true,
+    "transportation": true
+  }
+]

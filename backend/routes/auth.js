@@ -1,203 +1,87 @@
-const express = require("express");
-const User = require("../models/User");
+import express from "express";
+import bcrypt from "bcryptjs";
+import User from "../models/User.js";
 
 const router = express.Router();
 
-// @route   POST /api/auth/signup
-// @desc    Register a new user
-// @access  Public
+// ✅ SIGNUP
 router.post("/signup", async (req, res) => {
   try {
-    const { name, email, password, passwordConfirm } = req.body;
+    const { name, email, password } = req.body;
 
-    // Validation
-    if (!name || !email || !password || !passwordConfirm) {
-      return res.status(400).json({ message: "Please provide all required fields" });
+    // Check if user exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
     }
 
-    if (password !== passwordConfirm) {
-      return res.status(400).json({ message: "Passwords do not match" });
-    }
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Check if user already exists
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return res.status(400).json({ message: "Email already exists" });
-    }
-
-    // Create user
-    const user = await User.create({
+    // Save user
+    const newUser = new User({
       name,
       email,
-      password
+      password: hashedPassword
     });
 
-    // Remove password from response
-    user.password = undefined;
+    await newUser.save();
 
-    res.status(201).json({
-      success: true,
-      message: "User registered successfully",
-      user
+    res.json({
+      message: "Signup successful",
+      user: {
+        name,
+        email
+      }
     });
+
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
-// @route   POST /api/auth/login
-// @desc    Login user
-// @access  Public
+import jwt from "jsonwebtoken";
+
+// ✅ LOGIN
+
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validation
-    if (!email || !password) {
-      return res.status(400).json({ message: "Please provide email and password" });
-    }
-
-    // Check if user exists and get password field
-    const user = await User.findOne({ email }).select("+password");
+    // Check user
+    const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "User not found" });
     }
 
-    // Check password
-    const isMatch = await user.matchPassword(password);
+    // Compare password
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid password" });
     }
 
-    // Remove password from response
-    user.password = undefined;
+    // Create token
+    const token = jwt.sign(
+      { id: user._id },
+      "secret123", // later we move to .env
+      { expiresIn: "1d" }
+    );
 
-    res.status(200).json({
-      success: true,
+    res.json({
       message: "Login successful",
-      user
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
-
-// @route   GET /api/auth/users
-// @desc    Get all users (READ - all)
-// @access  Public
-router.get("/users", async (req, res) => {
-  try {
-    const users = await User.find().select("-password");
-    res.status(200).json({
-      success: true,
-      count: users.length,
-      users
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
-
-// @route   GET /api/auth/user/:id
-// @desc    Get a single user by ID (READ - single)
-// @access  Public
-router.get("/user/:id", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id).select("-password");
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found"
-      });
-    }
-    res.status(200).json({
-      success: true,
-      user
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
-
-// @route   PUT /api/auth/user/:id
-// @desc    Update user (UPDATE)
-// @access  Public
-router.put("/user/:id", async (req, res) => {
-  try {
-    const { name, email } = req.body;
-
-    let user = await User.findById(req.params.id);
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found"
-      });
-    }
-
-    // Check if email is already taken by another user
-    if (email && email !== user.email) {
-      const emailExists = await User.findOne({ email });
-      if (emailExists) {
-        return res.status(400).json({ message: "Email already in use" });
+      token,
+      user: {
+        name: user.name,
+        email: user.email
       }
-    }
-
-    // Update user
-    user = await User.findByIdAndUpdate(
-      req.params.id,
-      { name, email },
-      { new: true, runValidators: true }
-    ).select("-password");
-
-    res.status(200).json({
-      success: true,
-      message: "User updated successfully",
-      user
     });
+
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
-// @route   DELETE /api/auth/user/:id
-// @desc    Delete user (DELETE)
-// @access  Public
-router.delete("/user/:id", async (req, res) => {
-  try {
-    const user = await User.findByIdAndDelete(req.params.id);
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found"
-      });
-    }
 
-    res.status(200).json({
-      success: true,
-      message: "User deleted successfully",
-      user
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
-
-module.exports = router;
+export default router;
