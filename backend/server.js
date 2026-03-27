@@ -1,7 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
+
+dotenv.config(); 
 
 const app = express();
 
@@ -9,9 +12,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/edupath")
-  .then(() => console.log("MongoDB Connected"))
+// ✅ MongoDB (USE ATLAS NOW)
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
   .catch(err => console.log(err));
 
 // ✅ Test route
