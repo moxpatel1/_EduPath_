@@ -1,0 +1,100 @@
+[
+  { "name": "DAIICT", "branch": "CSE", "category": "OPEN", "closingRank": 500 },
+  { "name": "DAIICT", "branch": "ICT", "category": "OPEN", "closingRank": 700 },
+
+  { "name": "Nirma University", "branch": "CSE", "category": "OPEN", "closingRank": 1200 },
+  { "name": "Nirma University", "branch": "IT", "category": "OPEN", "closingRank": 1500 },
+
+  { "name": "LD College", "branch": "CSE", "category": "OPEN", "closingRank": 1800 },
+  { "name": "LD College", "branch": "IT", "category": "OPEN", "closingRank": 2200 },
+
+  { "name": "VGEC", "branch": "CSE", "category": "OPEN", "closingRank": 3000 },
+  { "name": "VGEC", "branch": "IT", "category": "OPEN", "closingRank": 3500 },
+
+  { "name": "GEC Rajkot", "branch": "CSE", "category": "OPEN", "closingRank": 4500 },
+  { "name": "GEC Bharuch", "branch": "CSE", "category": "OPEN", "closingRank": 6000 },
+
+  { "name": "GEC Modasa", "branch": "CSE", "category": "OPEN", "closingRank": 6500 },
+  { "name": "GEC Gandhinagar", "branch": "CSE", "category": "OPEN", "closingRank": 5000 },
+
+  { "name": "Parul University", "branch": "CSE", "category": "OPEN", "closingRank": 25000 },
+  { "name": "Silver Oak University", "branch": "CSE", "category": "OPEN", "closingRank": 20000 },
+
+  { "name": "Marwadi University", "branch": "CSE", "category": "OPEN", "closingRank": 18000 },
+  { "name": "SAL Institute", "branch": "CSE", "category": "OPEN", "closingRank": 22000 },
+
+  { "name": "VGEC", "branch": "Mechanical", "category": "OPEN", "closingRank": 7000 },
+  { "name": "LD College", "branch": "Mechanical", "category": "OPEN", "closingRank": 5000 },
+
+  { "name": "Nirma University", "branch": "Mechanical", "category": "OPEN", "closingRank": 4000 },
+
+  { "name": "VGEC", "branch": "Civil", "category": "OPEN", "closingRank": 8000 },
+  { "name": "LD College", "branch": "Civil", "category": "OPEN", "closingRank": 7500 },
+
+  { "name": "Nirma University", "branch": "Civil", "category": "OPEN", "closingRank": 6000 },
+
+  { "name": "VGEC", "branch": "Electrical", "category": "OPEN", "closingRank": 7000 },
+  { "name": "LD College", "branch": "Electrical", "category": "OPEN", "closingRank": 6500 },
+
+  { "name": "Nirma University", "branch": "Electrical", "category": "OPEN", "closingRank": 5500 },
+
+  { "name": "GEC Rajkot", "branch": "Mechanical", "category": "OPEN", "closingRank": 9000 },
+  { "name": "GEC Bharuch", "branch": "Mechanical", "category": "OPEN", "closingRank": 11000 },
+
+  { "name": "GEC Modasa", "branch": "Mechanical", "category": "OPEN", "closingRank": 12000 },
+
+  { "name": "DAIICT", "branch": "ICT", "category": "SC", "closingRank": 4000 },
+  { "name": "Nirma University", "branch": "CSE", "category": "SC", "closingRank": 6000 },
+
+  { "name": "LD College", "branch": "CSE", "category": "SC", "closingRank": 7000 },
+  { "name": "VGEC", "branch": "CSE", "category": "SC", "closingRank": 8000 },
+
+  { "name": "GEC Rajkot", "branch": "CSE", "category": "SC", "closingRank": 9000 },
+
+  { "name": "Silver Oak University", "branch": "CSE", "category": "SC", "closingRank": 28000 },
+  { "name": "Parul University", "branch": "CSE", "category": "SC", "closingRank": 30000 },
+
+  { "name": "DAIICT", "branch": "ICT", "category": "ST", "closingRank": 10000 },
+  { "name": "Nirma University", "branch": "CSE", "category": "ST", "closingRank": 12000 },
+
+  { "name": "LD College", "branch": "CSE", "category": "ST", "closingRank": 14000 },
+  { "name": "VGEC", "branch": "CSE", "category": "ST", "closingRank": 15000 },
+
+  { "name": "GEC Bharuch", "branch": "CSE", "category": "ST", "closingRank": 18000 },
+
+  { "name": "Parul University", "branch": "CSE", "category": "ST", "closingRank": 40000 },
+
+  { "name": "Marwadi University", "branch": "IT", "category": "OPEN", "closingRank": 22000 },
+  { "name": "SAL Institute", "branch": "IT", "category": "OPEN", "closingRank": 20000 },
+
+  { "name": "VGEC", "branch": "IT", "category": "SC", "closingRank": 9000 },
+  { "name": "LD College", "branch": "IT", "category": "SC", "closingRank": 8500 },
+
+  { "name": "VGEC", "branch": "IT", "category": "ST", "closingRank": 17000 },
+
+  { "name": "GEC Gandhinagar", "branch": "IT", "category": "OPEN", "closingRank": 5000 },
+  { "name": "GEC Gandhinagar", "branch": "IT", "category": "SC", "closingRank": 8500 },
+  { "name": "GEC Gandhinagar", "branch": "IT", "category": "ST", "closingRank": 16000 },
+
+  { "name": "GEC Modasa", "branch": "Civil", "category": "OPEN", "closingRank": 13000 },
+  { "name": "GEC Modasa", "branch": "Civil", "category": "SC", "closingRank": 20000 },
+  { "name": "GEC Modasa", "branch": "Civil", "category": "ST", "closingRank": 30000 },
+
+  { "name": "GEC Rajkot", "branch": "Electrical", "category": "OPEN", "closingRank": 9500 },
+  { "name": "GEC Rajkot", "branch": "Electrical", "category": "SC", "closingRank": 15000 },
+  { "name": "GEC Rajkot", "branch": "Electrical", "category": "ST", "closingRank": 25000 },
+
+  { "name": "GEC Bharuch", "branch": "Electrical", "category": "OPEN", "closingRank": 10000 },
+  { "name": "GEC Bharuch", "branch": "Electrical", "category": "SC", "closingRank": 18000 },
+  { "name": "GEC Bharuch", "branch": "Electrical", "category": "ST", "closingRank": 28000 },
+
+  { "name": "Silver Oak University", "branch": "IT", "category": "OPEN", "closingRank": 24000 },
+  { "name": "Silver Oak University", "branch": "IT", "category": "SC", "closingRank": 32000 },
+  { "name": "Silver Oak University", "branch": "IT", "category": "ST", "closingRank": 38000 },
+
+  { "name": "Parul University", "branch": "IT", "category": "OPEN", "closingRank": 26000 },
+  { "name": "Parul University", "branch": "IT", "category": "SC", "closingRank": 35000 },
+  { "name": "Parul University", "branch": "IT", "category": "ST", "closingRank": 42000 }
+
+  
+]
