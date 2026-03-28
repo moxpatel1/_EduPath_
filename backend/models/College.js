@@ -1,44 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const collegeSchema = new mongoose.Schema({
-  instituteName: {
-    type: String,
-    required: true
-  },
-  city: {
-    type: String,
-    required: true
-  },
-  branch: {
-    type: String,
-    required: true
-  },
-  category: {
-    type: String,
-    required: true
-  },
-  cutoffRank: {
-    type: Number,
-    required: true
-  },
-  fees: {
-    type: String,
-    required: true
-  },
-  hostelBoys: {
-    type: Boolean,
-    default: false
-  },
-  hostelGirls: {
-    type: Boolean,
-    default: false
-  },
-  transportation: {
-    type: Boolean,
-    default: false
-  }
-}, {
-  timestamps: true
+  name: String,
+  branch: String,
+  category: String,
+  closingRank: Number
 });
 
-module.exports = mongoose.model('College', collegeSchema);
+export default mongoose.model("College", collegeSchema);
