@@ -18,25 +18,50 @@ const Predictor = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const { rank, category, branch } = formData;
+  const { rank, category, branch } = formData;
 
-    if (!rank || !category || !branch) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (!rank || !category || !branch) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    // Save data
-    localStorage.setItem(
-      "edupathPredictionInput",
-      JSON.stringify(formData)
-    );
+  try {
+    const response = await fetch("http://localhost:5000/api/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        rank: Number(rank),
+        category: category.toUpperCase(),
+        branch:
+          branch === "Computer Engineering"
+            ? "CSE"
+            : branch === "Information Technology"
+            ? "IT"
+            : branch === "Mechanical Engineering"
+            ? "Mechanical"
+            : branch === "Electrical Engineering"
+            ? "Electrical"
+            : "Civil",
+      }),
+    });
 
-    // Navigate to result page
+    const data = await response.json();
+
+    // 🔥 Save result
+    localStorage.setItem("predictionResult", JSON.stringify(data));
+
     navigate("/results");
-  };
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+};
+
 
   return (
     <div className="bg-slate-100 min-h-screen">
@@ -89,7 +114,7 @@ const Predictor = () => {
                 onChange={handleChange}
               >
                 <option value="">Select</option>
-                <option>General</option>
+                <option>OPEN</option>
                 <option>OBC</option>
                 <option>SC</option>
                 <option>ST</option>
