@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
+import predictRoutes from "./routes/predict.js";
+
+
 
 dotenv.config(); 
 
@@ -24,6 +27,7 @@ app.get("/", (req, res) => {
 
 // ✅ Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/predict", predictRoutes);
 
 // ✅ Start server
 app.listen(5000, () => {
