@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Predictor from "./pages/Predictor";
 import Admission from "./pages/Admission";
 import Signup from "./pages/Signup";
+import Results from "./pages/Results";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 
@@ -54,6 +55,17 @@ function App() {
           }
         />
 
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/results"
+          element={
+            <ProtectedRoute>
+              <Results />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
