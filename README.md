@@ -21,39 +21,6 @@ EduPath is a web-based application designed to help students predict their admis
 
 ---
 
-## 📂 Project Structure
-
-_EDUPATH_/
-│
-├── backend/                # Server-side logic and APIs
-│   ├── auth/               # Authentication modules
-│   ├── data/               # Static or seed data
-│   ├── models/             # Database schemas
-│   ├── routes/             # API route definitions
-│   ├── node_modules/       # Backend dependencies
-│   ├── .env                # Environment variables
-│   ├── .gitignore          # Git ignore rules
-│   ├── package.json        # Backend dependencies and scripts
-│   ├── package-lock.json   # Dependency lock file
-│   ├── seed.js             # Database seeding script
-│   └── server.js           # Entry point for backend server
-│
-├── Frontend/               # Client-side application
-│   ├── public/             # Static assets
-│   ├── src/                # React components and logic
-│   ├── node_modules/       # Frontend dependencies
-│   ├── .gitignore          # Git ignore rules
-│   ├── eslint.config.js    # ESLint configuration
-│   ├── index.html          # Main HTML entry
-│   ├── package.json        # Frontend dependencies and scripts
-│   ├── package-lock.json   # Dependency lock file
-│   ├── postcss.config.js   # PostCSS configuration
-│   ├── README.md           # Frontend-specific documentation
-│   ├── tailwind.config.js  # Tailwind CSS configuration
-│   └── vite.config.js      # Vite build configuration
-
----
-
 ## 📊 How It Works
 1. Input Rank: Students enter their ACPC rank  
 2. Prediction Engine: Backend logic compares rank with cutoff data  
