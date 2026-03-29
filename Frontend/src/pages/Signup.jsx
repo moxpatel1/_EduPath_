@@ -97,7 +97,7 @@ const Signup = () => {
     <div
       className="flex flex-col items-center justify-center min-h-screen"
       style={{
-        backgroundImage: "url('/media/images/Copilot_20260201_113525.png')",
+        backgroundImage: "url('/media/images/Blue_Edu.png')",
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}

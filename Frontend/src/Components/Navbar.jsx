@@ -19,7 +19,7 @@ const Navbar = () => {
       {/* Logo */}
       <div className="font-bold">
         <img
-          src="/media/images/logo1.png"
+          src="/media/images/logo_1.png"
           className="w-32"
           alt="logo"
         />
