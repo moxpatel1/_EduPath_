@@ -14,13 +14,13 @@ const Navbar = () => {
 
 
   return (
-    <nav className="flex justify-between items-center p-5 bg-white shadow-lg">
+    <nav className="flex justify-between items-center px-4 md:px-6 py-3 bg-white shadow-lg">
 
       {/* Logo */}
-      <div className="font-bold">
+      <div className="shrink-0">
         <img
-          src="/media/images/logo_1.png"
-          className="w-32"
+          src="/logo_1.png"
+          className="h-19 md:h-22 w-auto object-contain"
           alt="logo"
         />
       </div>

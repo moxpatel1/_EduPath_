@@ -18,15 +18,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
+        <Route path="/" element={<Home />} />
+
         {/* ✅ PROTECTED ROUTES */}
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
 
         <Route
           path="/fees"
@@ -54,10 +48,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-      </Routes>
-
-      <Routes>
         <Route
           path="/results"
           element={
@@ -66,6 +56,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
