@@ -1,90 +1,100 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-   const navigate = useNavigate();
+  // ✅ Load user safely
+  useEffect(() => {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      setUser(storedUser);
+    } catch {
+      setUser(null);
+    }
+  }, []);
 
-  const user = JSON.parse(localStorage.getItem("user"));
-
+  // ✅ Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    setUser(null);
     navigate("/login");
   };
 
-
   return (
-    <nav className="flex justify-between items-center p-5 bg-white shadow-lg">
+    <nav className="h-14 flex justify-between items-center px-6 bg-white shadow-md">
 
-      {/* Logo */}
-      <div className="font-bold">
+      {/* LOGO */}
+      <Link to="/">
         <img
           src="/media/images/logo_1.png"
-          className="w-32"
+          className="h-8 object-contain"
           alt="logo"
         />
-      </div>
+      </Link>
 
-      {/* Links */}
-    <ul className="flex space-x-4 text-black items-center">
+      {/* LINKS */}
+      <ul className="flex gap-3 text-sm items-center">
 
-  <li>
-    <Link to="/" className="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition">
-      Home
-    </Link>
-  </li>
+        <li>
+          <Link to="/" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
+            Home
+          </Link>
+        </li>
 
-  <li>
-    <Link to="/predict" className="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition">
-      Predict College
-    </Link>
-  </li>
+        <li>
+          <Link to="/predict" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
+            Predict College
+          </Link>
+        </li>
 
-  <li>
-    <Link to="/admission" className="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition">
-      Admission Guide
-    </Link>
-  </li>
+        <li>
+          <Link to="/admission" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
+            Admission Guide
+          </Link>
+        </li>
 
-  <li>
-    <Link to="/fees" className="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition">
-      Fees/Scholarships
-    </Link>
-  </li>
+        <li>
+          <Link to="/fees" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
+            Fees
+          </Link>
+        </li>
 
-  {/* ✅ CONDITIONAL UI */}
-  {user ? (
-    <>
-      <li className="px-4 py-2 font-semibold text-blue-600">
-        Hi, {user.name}
-      </li>
+        {/* ✅ AUTH UI */}
+        {user ? (
+          <>
+            <li className="text-blue-600 font-medium">
+              Hi, {user.name}
+            </li>
 
-      <li>
-        <button
-          onClick={handleLogout}
-          className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition"
-        >
-          Logout
-        </button>
-      </li>
-    </>
-  ) : (
-    <>
-      <li>
-        <Link to="/login" className="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition">
-          Login
-        </Link>
-      </li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+              >
+                Logout
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/login" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
+                Login
+              </Link>
+            </li>
 
-      <li>
-        <Link to="/signup" className="px-4 py-2 rounded hover:bg-sky-700 hover:text-white transition">
-          Signup
-        </Link>
-      </li>
-    </>
-  )}
+            <li>
+              <Link to="/signup" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
+                Signup
+              </Link>
+            </li>
+          </>
+        )}
 
-</ul>
+      </ul>
     </nav>
   );
 };

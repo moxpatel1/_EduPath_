@@ -7,6 +7,7 @@ import Predictor from "./pages/Predictor";
 import Admission from "./pages/Admission";
 import Signup from "./pages/Signup";
 import Results from "./pages/Results";
+import CityPage from "./pages/CityPage";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 
@@ -51,6 +52,51 @@ function App() {
           element={
             <ProtectedRoute>
               <Admission />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/ahmedabad"
+          element={
+            <ProtectedRoute>
+              <CityPage cityKey="ahmedabad" />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/gandhinagar"
+          element={
+            <ProtectedRoute>
+              <CityPage cityKey="gandhinagar" />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/anand"
+          element={
+            <ProtectedRoute>
+              <CityPage cityKey="anand" />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/surat"
+          element={
+            <ProtectedRoute>
+              <CityPage cityKey="surat" />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/vadodara"
+          element={
+            <ProtectedRoute>
+              <CityPage cityKey="vadodara" />
             </ProtectedRoute>
           }
         />
