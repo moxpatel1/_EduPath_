@@ -24,6 +24,7 @@ const Navbar = () => {
   };
 
   return (
+<<<<<<< HEAD
     <nav className="h-14 flex justify-between items-center px-6 bg-white shadow-md">
 
       {/* LOGO */}
@@ -31,6 +32,15 @@ const Navbar = () => {
         <img
           src="/media/images/logo_1.png"
           className="h-8 object-contain"
+=======
+    <nav className="flex justify-between items-center px-4 md:px-6 py-3 bg-white shadow-lg">
+
+      {/* Logo */}
+      <div className="shrink-0">
+        <img
+          src="/logo_1.png"
+          className="h-19 md:h-22 w-auto object-contain"
+>>>>>>> 8ddbebea83b0594726db7fe0dd3ae9c271612161
           alt="logo"
         />
       </Link>

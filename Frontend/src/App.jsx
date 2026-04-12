@@ -19,15 +19,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
+        <Route path="/" element={<Home />} />
+
         {/* ✅ PROTECTED ROUTES */}
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
 
         <Route
           path="/fees"
@@ -55,6 +49,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+<<<<<<< HEAD
 
         <Route
           path="/ahmedabad"
@@ -104,6 +99,8 @@ function App() {
       </Routes>
 
       <Routes>
+=======
+>>>>>>> 8ddbebea83b0594726db7fe0dd3ae9c271612161
         <Route
           path="/results"
           element={
@@ -112,6 +109,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
