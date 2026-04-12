@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-
   const API_URL = "http://localhost:5000/api/auth";
 
   const [form, setForm] = useState({
@@ -29,133 +28,90 @@ const Login = () => {
     const { email, password } = form;
 
     // ✅ VALIDATION
-    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
     if (!email.match(emailPattern)) {
-      showMessage("Please enter a valid email address.", "error");
+      showMessage("Invalid email", "error");
       return;
     }
 
     if (password.length < 6) {
-      showMessage("Password must be at least 6 characters long.", "error");
+      showMessage("Password must be at least 6 characters", "error");
       return;
     }
 
     showMessage("Logging in...", "info");
 
     try {
-      const response = await fetch(`${API_URL}/login`, {
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          password
-        })
+        body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (response.ok) {
-        showMessage("Login successful! Redirecting...", "success");
-
-        // Store token and user
+      if (res.ok) {
+        // ✅ STORE DATA
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
 
+        showMessage("Login successful!", "success");
+
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 1000);
 
       } else {
-        showMessage(data.message || "Login failed. Try again.", "error");
+        showMessage(data.message || "Login failed", "error");
       }
 
-    } catch (error) {
-      showMessage(
-        "Error: Cannot connect to backend (http://localhost:5000)",
-        "error"
-      );
+    } catch (err) {
+      showMessage("Backend not running!", "error");
     }
   };
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen"
-      style={{
-        backgroundImage: "url('/media/images/Blue_Edu.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-      }}
-    >
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
 
-      {/* HEADING */}
-      <h1 className="text-4xl font-bold text-white mb-6 drop-shadow-lg">
-        Welcome to EduPath
-      </h1>
+      <div className="bg-white p-6 rounded shadow w-80">
+        <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
 
-      {/* BOX */}
-      <div className="bg-white shadow-md w-96 rounded-lg">
-        <div className="p-6">
+        {message && (
+          <div className="mb-3 text-sm text-center text-red-500">
+            {message}
+          </div>
+        )}
 
-          <h3 className="text-2xl font-bold text-center mb-6">Login</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            className="border p-2 w-full mb-3"
+            onChange={handleChange}
+          />
 
-          {/* MESSAGE */}
-          {message && (
-            <div
-              className={`mb-4 p-3 rounded ${
-                type === "success"
-                  ? "bg-green-100 text-green-800"
-                  : type === "error"
-                  ? "bg-red-100 text-red-800"
-                  : "bg-blue-100 text-blue-800"
-              }`}
-            >
-              {message}
-            </div>
-          )}
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className="border p-2 w-full mb-3"
+            onChange={handleChange}
+          />
 
-          {/* FORM */}
-          <form onSubmit={handleSubmit}>
+          <button className="bg-blue-600 text-white w-full p-2 rounded">
+            Login
+          </button>
+        </form>
 
-            <input
-              type="email"
-              id="email"
-              placeholder="Email Address"
-              className="bg-white rounded-lg border p-3 mb-4 w-full"
-              required
-              onChange={handleChange}
-            />
-
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              className="bg-white rounded-lg border p-3 mb-4 w-full"
-              minLength="6"
-              required
-              onChange={handleChange}
-            />
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 mb-4"
-            >
-              Login
-            </button>
-
-          </form>
-
-          <h3 className="text-gray-500 mt-4">
-            Don't have an account?{" "}
-            <Link to="/signup" className="text-blue-600 hover:underline">
-              Sign up
-            </Link>
-          </h3>
-
-        </div>
+        <p className="text-sm mt-3 text-center">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="text-blue-600">Signup</Link>
+        </p>
       </div>
-
     </div>
   );
 };
