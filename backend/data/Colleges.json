@@ -1,0 +1,67 @@
+[
+  {"name":"LD College of Engineering","branch":"CSE","category":"OPEN","cutoffRank":1500,"city":"Ahmedabad"},
+  {"name":"LD College of Engineering","branch":"IT","category":"OPEN","cutoffRank":2200,"city":"Ahmedabad"},
+  {"name":"LD College of Engineering","branch":"Mechanical","category":"OPEN","cutoffRank":6000,"city":"Ahmedabad"},
+  {"name":"LD College of Engineering","branch":"Electrical","category":"OPEN","cutoffRank":5000,"city":"Ahmedabad"},
+  {"name":"LD College of Engineering","branch":"Civil","category":"OPEN","cutoffRank":8000,"city":"Ahmedabad"},
+
+  {"name":"VGEC","branch":"CSE","category":"OPEN","cutoffRank":2500,"city":"Chandkheda"},
+  {"name":"VGEC","branch":"IT","category":"OPEN","cutoffRank":3000,"city":"Chandkheda"},
+  {"name":"VGEC","branch":"Mechanical","category":"OPEN","cutoffRank":9000,"city":"Chandkheda"},
+  {"name":"VGEC","branch":"Electrical","category":"OPEN","cutoffRank":7500,"city":"Chandkheda"},
+  {"name":"VGEC","branch":"Civil","category":"OPEN","cutoffRank":10000,"city":"Chandkheda"},
+
+  {"name":"DAIICT","branch":"CSE","category":"OPEN","cutoffRank":1200,"city":"Gandhinagar"},
+  {"name":"DAIICT","branch":"IT","category":"OPEN","cutoffRank":1800,"city":"Gandhinagar"},
+
+  {"name":"Nirma University","branch":"CSE","category":"OPEN","cutoffRank":2000,"city":"Ahmedabad"},
+  {"name":"Nirma University","branch":"IT","category":"OPEN","cutoffRank":2500,"city":"Ahmedabad"},
+  {"name":"Nirma University","branch":"Mechanical","category":"OPEN","cutoffRank":7000,"city":"Ahmedabad"},
+  {"name":"Nirma University","branch":"Electrical","category":"OPEN","cutoffRank":6500,"city":"Ahmedabad"},
+  {"name":"Nirma University","branch":"Civil","category":"OPEN","cutoffRank":9000,"city":"Ahmedabad"},
+
+  {"name":"GCET","branch":"CSE","category":"OPEN","cutoffRank":3500,"city":"Vallabh Vidyanagar"},
+  {"name":"GCET","branch":"IT","category":"OPEN","cutoffRank":4200,"city":"Vallabh Vidyanagar"},
+  {"name":"GCET","branch":"Mechanical","category":"OPEN","cutoffRank":11000,"city":"Vallabh Vidyanagar"},
+  {"name":"GCET","branch":"Electrical","category":"OPEN","cutoffRank":9000,"city":"Vallabh Vidyanagar"},
+  {"name":"GCET","branch":"Civil","category":"OPEN","cutoffRank":13000,"city":"Vallabh Vidyanagar"},
+
+  {"name":"GEC Gandhinagar","branch":"CSE","category":"OPEN","cutoffRank":4000,"city":"Gandhinagar"},
+  {"name":"GEC Gandhinagar","branch":"IT","category":"OPEN","cutoffRank":4800,"city":"Gandhinagar"},
+  {"name":"GEC Gandhinagar","branch":"Mechanical","category":"OPEN","cutoffRank":12000,"city":"Gandhinagar"},
+  {"name":"GEC Gandhinagar","branch":"Electrical","category":"OPEN","cutoffRank":10000,"city":"Gandhinagar"},
+  {"name":"GEC Gandhinagar","branch":"Civil","category":"OPEN","cutoffRank":14000,"city":"Gandhinagar"},
+
+  {"name":"MSU Baroda","branch":"CSE","category":"OPEN","cutoffRank":2800,"city":"Vadodara"},
+  {"name":"MSU Baroda","branch":"IT","category":"OPEN","cutoffRank":3500,"city":"Vadodara"},
+  {"name":"MSU Baroda","branch":"Mechanical","category":"OPEN","cutoffRank":10000,"city":"Vadodara"},
+  {"name":"MSU Baroda","branch":"Electrical","category":"OPEN","cutoffRank":8500,"city":"Vadodara"},
+  {"name":"MSU Baroda","branch":"Civil","category":"OPEN","cutoffRank":12000,"city":"Vadodara"},
+
+  {"name":"SVNIT Surat","branch":"CSE","category":"OPEN","cutoffRank":1000,"city":"Surat"},
+  {"name":"SVNIT Surat","branch":"Mechanical","category":"OPEN","cutoffRank":5000,"city":"Surat"},
+  {"name":"SVNIT Surat","branch":"Electrical","category":"OPEN","cutoffRank":4000,"city":"Surat"},
+  {"name":"SVNIT Surat","branch":"Civil","category":"OPEN","cutoffRank":7000,"city":"Surat"},
+
+  {"name":"CHARUSAT","branch":"CSE","category":"OPEN","cutoffRank":4500,"city":"Changa"},
+  {"name":"CHARUSAT","branch":"IT","category":"OPEN","cutoffRank":5200,"city":"Changa"},
+  {"name":"CHARUSAT","branch":"Mechanical","category":"OPEN","cutoffRank":13000,"city":"Changa"},
+  {"name":"CHARUSAT","branch":"Electrical","category":"OPEN","cutoffRank":11000,"city":"Changa"},
+  {"name":"CHARUSAT","branch":"Civil","category":"OPEN","cutoffRank":15000,"city":"Changa"},
+
+  {"name":"PDEU","branch":"CSE","category":"OPEN","cutoffRank":3000,"city":"Gandhinagar"},
+  {"name":"PDEU","branch":"Mechanical","category":"OPEN","cutoffRank":9000,"city":"Gandhinagar"},
+  {"name":"PDEU","branch":"Electrical","category":"OPEN","cutoffRank":8000,"city":"Gandhinagar"},
+
+  {"name":"Silver Oak University","branch":"CSE","category":"OPEN","cutoffRank":8000,"city":"Ahmedabad"},
+  {"name":"Silver Oak University","branch":"IT","category":"OPEN","cutoffRank":9000,"city":"Ahmedabad"},
+  {"name":"Silver Oak University","branch":"Mechanical","category":"OPEN","cutoffRank":18000,"city":"Ahmedabad"},
+  {"name":"Silver Oak University","branch":"Electrical","category":"OPEN","cutoffRank":15000,"city":"Ahmedabad"},
+  {"name":"Silver Oak University","branch":"Civil","category":"OPEN","cutoffRank":20000,"city":"Ahmedabad"},
+
+  {"name":"Parul University","branch":"CSE","category":"OPEN","cutoffRank":10000,"city":"Vadodara"},
+  {"name":"Parul University","branch":"IT","category":"OPEN","cutoffRank":12000,"city":"Vadodara"},
+  {"name":"Parul University","branch":"Mechanical","category":"OPEN","cutoffRank":25000,"city":"Vadodara"},
+  {"name":"Parul University","branch":"Electrical","category":"OPEN","cutoffRank":20000,"city":"Vadodara"},
+  {"name":"Parul University","branch":"Civil","category":"OPEN","cutoffRank":30000,"city":"Vadodara"}
+]
