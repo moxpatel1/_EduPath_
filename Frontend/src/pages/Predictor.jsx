@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const Predictor = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  useEffect(() => {}, []);
 
   const [formData, setFormData] = useState({
     rank: "",
@@ -76,12 +72,12 @@ const Predictor = () => {
 
       <section className="flex flex-col items-center justify-center p-6 py-12">
 
-        <h1 className="text-4xl font-bold mb-8 text-center text-gray-800" data-aos="fade-up">
+        <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">
           College Predictor
         </h1>
 
         {/* HOW IT WORKS */}
-        <div className="border mb-6 border-blue-200 bg-blue-50 rounded-xl p-6 max-w-3xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <div className="border mb-6 border-blue-200 bg-blue-50 rounded-xl p-6 max-w-3xl shadow-lg">
           <p className="font-medium mb-2 text-blue-900">How it Works</p>
           <ul className="text-sm text-blue-900 space-y-1">
             <li>1. Based on previous year cutoff data</li>
@@ -91,7 +87,7 @@ const Predictor = () => {
         </div>
 
         {/* FORM */}
-        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="400">
+        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-8">
 
           <h2 className="text-2xl font-bold mb-6">
             Enter Your Details
@@ -106,7 +102,7 @@ const Predictor = () => {
                 name="rank"
                 type="number"
                 placeholder="e.g. 5000"
-                className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={handleChange}
               />
             </div>
@@ -116,7 +112,7 @@ const Predictor = () => {
               <label className="font-semibold">Category</label>
               <select
                 name="category"
-                className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={handleChange}
               >
                 <option value="">Select</option>
@@ -133,7 +129,7 @@ const Predictor = () => {
               <label className="font-semibold">Branch</label>
               <select
                 name="branch"
-                className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={handleChange}
               >
                 <option value="">Select</option>
@@ -149,7 +145,7 @@ const Predictor = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-purple-700 shadow-lg"
             >
               {loading ? "Predicting..." : "🚀 Show My Colleges"}
             </button>
