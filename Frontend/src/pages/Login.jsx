@@ -74,43 +74,101 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-4">
 
-      <div className="bg-white p-6 rounded shadow w-80">
-        <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+      </div>
 
+      <div className="relative bg-white/80 backdrop-blur-lg p-8 rounded-3xl shadow-2xl w-full max-w-md border border-white/20">
+
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <span className="text-white text-2xl">🔐</span>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
+          <p className="text-gray-600">Sign in to your ACPC Predictor account</p>
+        </div>
+
+        {/* Message */}
         {message && (
-          <div className="mb-3 text-sm text-center text-red-500">
+          <div className={`mb-6 p-4 rounded-xl text-center font-medium ${
+            type === "success"
+              ? "bg-green-50 text-green-700 border border-green-200"
+              : type === "error"
+              ? "bg-red-50 text-red-700 border border-red-200"
+              : "bg-blue-50 text-blue-700 border border-blue-200"
+          }`}>
             {message}
           </div>
         )}
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            className="border p-2 w-full mb-3"
-            onChange={handleChange}
-          />
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            className="border p-2 w-full mb-3"
-            onChange={handleChange}
-          />
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+              Email Address
+            </label>
+            <div className="relative">
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                onChange={handleChange}
+                required
+              />
+              <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">📧</span>
+            </div>
+          </div>
 
-          <button className="bg-blue-600 text-white w-full p-2 rounded">
-            Login
+          <div>
+            <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                onChange={handleChange}
+                required
+              />
+              <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">🔒</span>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-4 rounded-xl hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            Sign In
           </button>
+
         </form>
 
-        <p className="text-sm mt-3 text-center">
-          Don’t have an account?{" "}
-          <Link to="/signup" className="text-blue-600">Signup</Link>
-        </p>
+        {/* Footer */}
+        <div className="mt-8 text-center">
+          <p className="text-gray-600">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-600 hover:text-purple-600 font-semibold transition-colors duration-300">
+              Create one here
+            </Link>
+          </p>
+        </div>
+
+        {/* Forgot Password */}
+        <div className="mt-4 text-center">
+          <a href="#" className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">
+            Forgot your password?
+          </a>
+        </div>
+
       </div>
     </div>
   );

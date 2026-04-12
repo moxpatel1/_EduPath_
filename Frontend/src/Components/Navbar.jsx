@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const Navbar = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // ✅ Load user safely
   useEffect(() => {
@@ -24,87 +25,138 @@ const Navbar = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <nav className="h-14 flex justify-between items-center px-6 bg-white shadow-md">
+    <nav className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 sticky top-0 z-50">
 
-      {/* LOGO */}
-      <Link to="/">
-        <img
-          src="/media/images/logo_1.png"
-          className="h-8 object-contain"
-=======
-    <nav className="flex justify-between items-center px-4 md:px-6 py-3 bg-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
 
-      {/* Logo */}
-      <div className="shrink-0">
-        <img
-          src="/logo_1.png"
-          className="h-19 md:h-22 w-auto object-contain"
->>>>>>> 8ddbebea83b0594726db7fe0dd3ae9c271612161
-          alt="logo"
-        />
-      </Link>
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center space-x-2 group">
+              <img
+                src="/media/images/logo_1.png"
+                className="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                alt="ACPC Predictor Logo"
+              />
+              <span className="text-xl font-bold text-gray-900 hidden sm:block">ACPC Predictor</span>
+            </Link>
+          </div>
 
-      {/* LINKS */}
-      <ul className="flex gap-3 text-sm items-center">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            <Link to="/" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+              Home
+            </Link>
+            <Link to="/predict" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+              Predict College
+            </Link>
+            <Link to="/admission" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+              Admission Guide
+            </Link>
+            <Link to="/fees" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+              Fees
+            </Link>
+          </div>
 
-        <li>
-          <Link to="/" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
-            Home
-          </Link>
-        </li>
+          {/* Auth Section */}
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <>
+                <span className="text-gray-700 font-medium flex items-center">
+                  <span className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-2">
+                    {user.name?.charAt(0).toUpperCase()}
+                  </span>
+                  Hi, {user.name}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 font-medium transition-all duration-300 transform hover:scale-105 shadow-md"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
+                  Login
+                </Link>
+                <Link to="/signup" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 font-medium transition-all duration-300 transform hover:scale-105 shadow-md">
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
 
-        <li>
-          <Link to="/predict" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
-            Predict College
-          </Link>
-        </li>
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
 
-        <li>
-          <Link to="/admission" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
-            Admission Guide
-          </Link>
-        </li>
+        </div>
+      </div>
 
-        <li>
-          <Link to="/fees" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
-            Fees
-          </Link>
-        </li>
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className="px-4 py-4 space-y-2">
+            <Link to="/" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </Link>
+            <Link to="/predict" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+              Predict College
+            </Link>
+            <Link to="/admission" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+              Admission Guide
+            </Link>
+            <Link to="/fees" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+              Fees
+            </Link>
 
-        {/* ✅ AUTH UI */}
-        {user ? (
-          <>
-            <li className="text-blue-600 font-medium">
-              Hi, {user.name}
-            </li>
+            <div className="border-t border-gray-200 pt-4 mt-4">
+              {user ? (
+                <>
+                  <div className="px-4 py-2 text-gray-700 font-medium flex items-center">
+                    <span className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">
+                      {user.name?.charAt(0).toUpperCase()}
+                    </span>
+                    Hi, {user.name}
+                  </div>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 font-medium transition-all duration-300"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+                    Login
+                  </Link>
+                  <Link to="/signup" className="block mt-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 font-medium transition-all duration-300 text-center" onClick={() => setIsMenuOpen(false)}>
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
-            <li>
-              <button
-                onClick={handleLogout}
-                className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
-              >
-                Logout
-              </button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to="/login" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
-                Login
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/signup" className="px-3 py-1 rounded hover:bg-sky-600 hover:text-white transition">
-                Signup
-              </Link>
-            </li>
-          </>
-        )}
-
-      </ul>
     </nav>
   );
 };

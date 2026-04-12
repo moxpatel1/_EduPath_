@@ -49,7 +49,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-<<<<<<< HEAD
 
         <Route
           path="/ahmedabad"
@@ -96,11 +95,6 @@ function App() {
           }
         />
 
-      </Routes>
-
-      <Routes>
-=======
->>>>>>> 8ddbebea83b0594726db7fe0dd3ae9c271612161
         <Route
           path="/results"
           element={
