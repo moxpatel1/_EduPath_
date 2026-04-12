@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center space-x-2 group">
               <img
                 src="/media/images/logo_1.png"
-                className="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-10 w-auto object-contain"
                 alt="ACPC Predictor Logo"
               />
               <span className="text-xl font-bold text-gray-900 hidden sm:block">ACPC Predictor</span>
@@ -44,16 +44,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            <Link to="/" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+            <Link to="/" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
               Home
             </Link>
-            <Link to="/predict" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+            <Link to="/predict" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
               Predict College
             </Link>
-            <Link to="/admission" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+            <Link to="/admission" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
               Admission Guide
             </Link>
-            <Link to="/fees" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all duration-300">
+            <Link to="/fees" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
               Fees
             </Link>
           </div>
@@ -70,17 +70,17 @@ const Navbar = () => {
                 </span>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 font-medium transition-all duration-300 transform hover:scale-105 shadow-md"
+                  className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 font-medium shadow-md"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300">
+                <Link to="/login" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium">
                   Login
                 </Link>
-                <Link to="/signup" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 font-medium transition-all duration-300 transform hover:scale-105 shadow-md">
+                <Link to="/signup" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 font-medium shadow-md">
                   Sign Up
                 </Link>
               </>
@@ -91,7 +91,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300"
+              className="p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -110,16 +110,16 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
           <div className="px-4 py-4 space-y-2">
-            <Link to="/" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/predict" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/predict" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Predict College
             </Link>
-            <Link to="/admission" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/admission" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Admission Guide
             </Link>
-            <Link to="/fees" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/fees" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Fees
             </Link>
 
@@ -137,17 +137,17 @@ const Navbar = () => {
                       handleLogout();
                       setIsMenuOpen(false);
                     }}
-                    className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 font-medium transition-all duration-300"
+                    className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 font-medium"
                   >
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/login" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
                     Login
                   </Link>
-                  <Link to="/signup" className="block mt-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 font-medium transition-all duration-300 text-center" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/signup" className="block mt-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 font-medium text-center" onClick={() => setIsMenuOpen(false)}>
                     Sign Up
                   </Link>
                 </>
