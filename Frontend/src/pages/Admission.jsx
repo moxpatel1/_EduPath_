@@ -1,13 +1,20 @@
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Admission = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="bg-slate-100 m-0 p-0 min-h-screen max-w-full">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 m-0 p-0">
 
       <Navbar />
 
-      <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 px-6 text-center rounded-lg shadow-lg max-w-full mx-auto">
+      <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 px-6 text-center rounded-lg shadow-lg max-w-full mx-auto" data-aos="fade-up">
         <h1 className="text-4xl font-bold mb-6">
           Complete Admission Guide
         </h1>
@@ -16,27 +23,27 @@ const Admission = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4" data-aos="fade-up" data-aos-delay="200">
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-red-500 rounded-lg p-4">
+        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-red-500 rounded-lg p-4 hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
           <div className="text-blue-500 text-4xl mb-4">👤</div>
           <h2 className="text-xl font-semibold mb-2">200k+</h2>
           <h3 className="text-gray-600">Annual Applicants</h3>
         </div>
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-blue-500 rounded-lg p-4">
+        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-blue-500 rounded-lg p-4 hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
           <div className="text-green-500 text-4xl mb-4">🎓</div>
           <h2 className="text-xl font-semibold mb-2">400+</h2>
           <h3 className="text-gray-600">Colleges</h3>
         </div>
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-green-500 rounded-lg p-4">
+        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-green-500 rounded-lg p-4 hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
           <div className="text-purple-500 text-4xl mb-4">🏅</div>
           <h2 className="text-xl font-semibold mb-2">75k+</h2>
           <h3 className="text-gray-600">Total Seats</h3>
         </div>
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-yellow-500 rounded-lg p-4">
+        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-yellow-500 rounded-lg p-4 hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
           <div className="text-orange-500 text-4xl mb-4">⏰</div>
           <h2 className="text-xl font-semibold mb-2">3 Rounds</h2>
           <h3 className="text-gray-600">Counseling Rounds</h3>
@@ -44,13 +51,13 @@ const Admission = () => {
 
       </div>
 
-      <div className="p-6 bg-white shadow-md rounded-lg">
+      <div className="p-6 bg-white shadow-md rounded-lg" data-aos="fade-up" data-aos-delay="400">
         <h3 className="text-4xl flex justify-start font-bold">
           📚 Step-by-Step Admission Process
         </h3>
       </div>
 
-      <div className="ml-20 mr-20 mb-4 mt-4">
+      <div className="ml-20 mr-20 mb-4 mt-4" data-aos="fade-up" data-aos-delay="600">
 
         {/* STEP 1 */}
         <div className="max-w-full hover:shadow-xl border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
@@ -145,11 +152,11 @@ const Admission = () => {
       </div>
 
       {/* IMPORTANT DATES */}
-      <div className="m-10 mx-10 rounded-lg">
+      <div className="m-10 mx-10 rounded-lg" data-aos="fade-up" data-aos-delay="800">
         <h3 className="text-4xl font-bold">🗓️ Important Dates (Tentative)</h3>
       </div>
 
-      <div className="overflow-x-auto ml-20 mr-20 mt-4 rounded-lg">
+      <div className="overflow-x-auto ml-20 mr-20 mt-4 rounded-lg" data-aos="fade-up" data-aos-delay="1000">
         <table className="min-w-full border border-gray-300 divide-y divide-gray-200">
           <thead>
             <tr className="bg-blue-500 h-14 text-white">

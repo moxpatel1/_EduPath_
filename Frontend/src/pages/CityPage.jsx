@@ -155,10 +155,10 @@ const CityPage = ({ cityKey }) => {
 
   if (!city) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">City page not found</h1>
-          <Link to="/" className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
+          <Link to="/" className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
             Back to Home
           </Link>
         </div>
@@ -167,18 +167,19 @@ const CityPage = ({ cityKey }) => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <Navbar />
 
       <main className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">{city.title}</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center" data-aos="fade-up">{city.title}</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="200">
             {city.colleges.map((college) => (
               <div
                 key={college.name}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                data-aos="fade-up"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
+                data-aos="zoom-in"
+                data-aos-delay="300"
               >
                 <img
                   src={college.image}
@@ -194,7 +195,7 @@ const CityPage = ({ cityKey }) => {
                       href={college.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                      className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
                     >
                       Visit Website
                     </a>

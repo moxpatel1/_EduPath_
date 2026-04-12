@@ -1,15 +1,22 @@
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Fees = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="bg-gray-50 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-slate-900">
 
       {/* NAVBAR */}
       <Navbar />
 
       {/* ================= FEES COMPARISON ================= */}
-      <section className="px-4 py-12">
+      <section className="px-4 py-12" data-aos="fade-up">
         <div className="max-w-6xl mx-auto">
 
           <div className="text-center">
@@ -19,10 +26,10 @@ const Fees = () => {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2" data-aos="fade-up" data-aos-delay="200">
 
             {/* GOV */}
-            <div className="rounded-2xl border border-blue-200 bg-white shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-blue-200 bg-white shadow-sm overflow-hidden hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
               <div className="bg-blue-50 px-6 py-5">
                 <h2 className="text-lg font-bold text-blue-900">Government Colleges</h2>
                 <p className="text-sm text-slate-500">Lower fees, high ROI</p>
@@ -50,7 +57,7 @@ const Fees = () => {
             </div>
 
             {/* PRIVATE */}
-            <div className="rounded-2xl border border-violet-200 bg-white shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-violet-200 bg-white shadow-sm overflow-hidden hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
               <div className="bg-violet-50 px-6 py-5">
                 <h2 className="text-lg font-bold text-violet-900">Private Colleges</h2>
                 <p className="text-sm text-slate-500">Better facilities, higher fees</p>
@@ -82,10 +89,10 @@ const Fees = () => {
       </section>
 
       {/* ================= TABLE ================= */}
-      <section className="px-4 pb-12">
+      <section className="px-4 pb-12" data-aos="fade-up" data-aos-delay="600">
         <div className="max-w-6xl mx-auto">
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 hover:shadow-xl transition-shadow duration-300">
 
             <h2 className="text-lg font-bold">College-wise Fee Structure</h2>
             <p className="mt-1 text-sm text-slate-500">
