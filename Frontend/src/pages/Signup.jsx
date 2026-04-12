@@ -98,7 +98,7 @@ const Signup = () => {
                 type="text"
                 id="name"
                 placeholder="Enter your full name"
-                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white/50 backdrop-blur-sm"
                 onChange={handleChange}
                 required
               />
@@ -115,7 +115,7 @@ const Signup = () => {
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white/50 backdrop-blur-sm"
                 onChange={handleChange}
                 required
               />
@@ -132,7 +132,7 @@ const Signup = () => {
                 type="password"
                 id="password"
                 placeholder="Create a strong password"
-                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white/50 backdrop-blur-sm"
                 onChange={handleChange}
                 required
               />
@@ -149,7 +149,7 @@ const Signup = () => {
                 type="password"
                 id="confirmPassword"
                 placeholder="Confirm your password"
-                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white/50 backdrop-blur-sm"
                 onChange={handleChange}
                 required
               />
@@ -159,7 +159,7 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white font-bold py-3 px-4 rounded-xl hover:from-green-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white font-bold py-3 px-4 rounded-xl hover:from-green-700 hover:to-blue-700 shadow-lg"
           >
             Create Account
           </button>
@@ -170,7 +170,7 @@ const Signup = () => {
         <div className="mt-8 text-center">
           <p className="text-gray-600">
             Already have an account?{" "}
-            <Link to="/login" className="text-green-600 hover:text-blue-600 font-semibold transition-colors duration-300">
+            <Link to="/login" className="text-green-600 hover:text-blue-600 font-semibold">
               Sign in here
             </Link>
           </p>
