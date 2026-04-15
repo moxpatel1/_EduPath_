@@ -268,7 +268,7 @@ const Home = () => {
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">
           <p className="text-gray-400">
             © 2026 ACPC College Predictor. All rights reserved.
-            <span className="text-blue-400 ml-2">Made with ❤️ for students</span>
+            <span className="text-blue-400 ml-2">Made for students</span>
           </p>
         </div>
 
