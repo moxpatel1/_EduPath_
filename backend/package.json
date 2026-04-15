@@ -2,7 +2,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "seed": "node seed.js"
+    "seed": "node scripts/importCutoffs.js",
+    "import:cutoffs": "node scripts/importCutoffs.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -10,6 +11,7 @@
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.3.3"
+    "mongoose": "^9.3.3",
+    "xlsx": "^0.18.5"
   }
 }
