@@ -26,6 +26,16 @@ EduPath is a web-based application designed to help students predict their admis
 2. Prediction Engine: Backend logic compares rank with cutoff data  
 3. Output: Displays possible colleges and courses with admission likelihood  
 
+## 📥 Data Import
+Use the backend import script to load spreadsheet data into MongoDB:
+
+```bash
+cd backend
+node scripts/importCutoffs.js path/to/your-file.xlsx --replace
+```
+
+The script accepts Excel or CSV files and merges all sheets into the `College` collection. PDF data should first be converted into Excel or CSV before importing.
+
 ---
 
 ## 🎯 Use Cases
