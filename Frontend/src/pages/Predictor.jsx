@@ -117,10 +117,11 @@ const Predictor = () => {
               >
                 <option value="">Select</option>
                 <option value="OPEN">OPEN</option>
-                <option value="OBC">OBC</option>
+                <option value="OBC">SEBC</option>
                 <option value="SC">SC</option>
                 <option value="ST">ST</option>
                 <option value="EWS">EWS</option>
+                <option value="TFWS">TFWS</option>
               </select>
             </div>
 
