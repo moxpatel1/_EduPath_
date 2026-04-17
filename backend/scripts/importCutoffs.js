@@ -63,7 +63,29 @@ const normalizeBranch = (value) => {
   return titleCase(value);
 };
 
-const normalizeCategory = (value) => String(value || "").trim().toUpperCase();
+const CATEGORY_ALIASES = {
+  GEN: "OPEN",
+  GENERAL: "OPEN",
+  UR: "OPEN",
+  OBC: "SEBC",
+  "OBC-PH": "SEBC-PH",
+  OBCPH: "SEBC-PH",
+  SEBCPH: "SEBC-PH",
+};
+
+const normalizeCategory = (value) => {
+  const normalized = String(value || "")
+    .trim()
+    .toUpperCase()
+    .replace(/[\s_]+/g, "-")
+    .replace(/-+/g, "-");
+
+  if (!normalized) {
+    return "";
+  }
+
+  return CATEGORY_ALIASES[normalized] || normalized;
+};
 
 const normalizeInstituteType = (value) => {
   const normalized = normalizeKey(value);
@@ -144,7 +166,7 @@ const buildRecord = (row) => {
   const name = String(resolveField(row, "name") || "").trim();
   const branch = normalizeBranch(resolveField(row, "branch"));
   const rawCategory = resolveField(row, "category");
-  const category = normalizeCategory(rawCategory === "GEN" ? "OPEN" : rawCategory);
+  const category = normalizeCategory(rawCategory);
   const expectedCutoffRank = parseNumber(resolveField(row, "expectedCutoffRank"));
   const lastRank = parseNumber(resolveField(row, "lastRank"));
   const cutoffRank = lastRank ?? expectedCutoffRank;
