@@ -33,11 +33,22 @@ const getChanceBadge = (chance) => {
 
 const showValue = (value) => (value === null || value === undefined || value === "" ? "-" : value);
 
+const getChancePriority = (chance) => {
+  if (chance === "High") {
+    return 0;
+  }
+  if (chance === "Medium") {
+    return 1;
+  }
+  return 2;
+};
+
 const Results = () => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [collegeTypeFilter, setCollegeTypeFilter] = useState("all");
+  const [resultScope, setResultScope] = useState("recommended");
 
   useEffect(() => {
     const storedResult = localStorage.getItem("predictionResult");
@@ -55,20 +66,36 @@ const Results = () => {
       return [];
     }
 
+    const inputRank = Number(results.inputRank);
+    const hasInputRank = Number.isFinite(inputRank) && inputRank > 0;
+
     return [...(results.safe || []), ...(results.target || []), ...(results.dream || [])]
       .map((college) => ({
         ...college,
         instituteTypeLabel: normalizeInstituteType(college.instituteType),
+        rankGapAbs: hasInputRank ? Math.abs(Number(college.cutoffRank || 0) - inputRank) : Number.MAX_SAFE_INTEGER,
       }))
-      .sort((left, right) => Number(left.cutoffRank || 0) - Number(right.cutoffRank || 0));
+      .sort((left, right) => {
+        const chanceDiff = getChancePriority(left.chance) - getChancePriority(right.chance);
+        if (chanceDiff !== 0) {
+          return chanceDiff;
+        }
+
+        const gapDiff = Number(left.rankGapAbs || 0) - Number(right.rankGapAbs || 0);
+        if (gapDiff !== 0) {
+          return gapDiff;
+        }
+
+        return Number(left.cutoffRank || 0) - Number(right.cutoffRank || 0);
+      });
   }, [results]);
 
   const filteredRows = useMemo(() => {
-    if (collegeTypeFilter === "all") {
-      return tableRows;
-    }
-
     return tableRows.filter((college) => {
+      if (resultScope === "recommended" && college.chance === "Low") {
+        return false;
+      }
+
       if (collegeTypeFilter === "self-finance") {
         return college.instituteTypeLabel === "Self-Finance";
       }
@@ -77,7 +104,12 @@ const Results = () => {
       }
       return true;
     });
-  }, [tableRows, collegeTypeFilter]);
+  }, [tableRows, collegeTypeFilter, resultScope]);
+
+  const recommendedCount = useMemo(
+    () => tableRows.filter((college) => college.chance !== "Low").length,
+    [tableRows],
+  );
 
   if (loading) {
     return (
@@ -113,10 +145,25 @@ const Results = () => {
         <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
             <p className="text-gray-600 text-sm md:text-base">
-              Showing previous year predictions in table format
+              {resultScope === "recommended"
+                ? `Showing recommended colleges (High + Medium chance). Count: ${recommendedCount}`
+                : "Showing all colleges including low chance options"}
             </p>
 
             <div className="flex items-center gap-3">
+              <label htmlFor="resultScope" className="text-sm font-medium text-gray-700">
+                Results
+              </label>
+              <select
+                id="resultScope"
+                value={resultScope}
+                onChange={(e) => setResultScope(e.target.value)}
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="recommended">Recommended</option>
+                <option value="all">All (include low chance)</option>
+              </select>
+
               <label htmlFor="collegeType" className="text-sm font-medium text-gray-700">
                 College Type
               </label>
@@ -142,6 +189,9 @@ const Results = () => {
                   <th className="px-3 py-3 font-semibold">Alloted Cat</th>
                   <th className="px-3 py-3 font-semibold">Quota</th>
                   <th className="px-3 py-3 font-semibold">Institute Type</th>
+                  <th className="px-3 py-3 font-semibold">City</th>
+                  <th className="px-3 py-3 font-semibold">Year</th>
+                  <th className="px-3 py-3 font-semibold">Round</th>
                   <th className="px-3 py-3 font-semibold">Expected Cutoff Rank</th>
                   <th className="px-3 py-3 font-semibold">Last Rank</th>
                   <th className="px-3 py-3 font-semibold">Chance</th>
@@ -156,6 +206,9 @@ const Results = () => {
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.category)}</td>
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.quota)}</td>
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.instituteTypeLabel)}</td>
+                      <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.city)}</td>
+                      <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.year)}</td>
+                      <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.round)}</td>
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.expectedCutoffRank)}</td>
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.lastRank || college.cutoffRank)}</td>
                       <td className="px-3 py-3 whitespace-nowrap">
@@ -167,7 +220,7 @@ const Results = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={8} className="px-3 py-8 text-center text-gray-500">
+                    <td colSpan={11} className="px-3 py-8 text-center text-gray-500">
                       No colleges found for selected college type filter.
                     </td>
                   </tr>
