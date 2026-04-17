@@ -3,7 +3,29 @@ import College from "../models/College.js";
 
 const router = express.Router();
 
-const normalizeCategory = (value) => String(value || "").trim().toUpperCase();
+const CATEGORY_ALIASES = {
+  GEN: "OPEN",
+  GENERAL: "OPEN",
+  UR: "OPEN",
+  OBC: "SEBC",
+  "OBC-PH": "SEBC-PH",
+  OBCPH: "SEBC-PH",
+  SEBCPH: "SEBC-PH",
+};
+
+const normalizeCategory = (value) => {
+  const normalized = String(value || "")
+    .trim()
+    .toUpperCase()
+    .replace(/[\s_]+/g, "-")
+    .replace(/-+/g, "-");
+
+  if (!normalized) {
+    return "";
+  }
+
+  return CATEGORY_ALIASES[normalized] || normalized;
+};
 const escapeRegex = (value) => String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const normalizeInstituteType = (value) => {
   const normalized = String(value || "").trim().toLowerCase();
@@ -51,17 +73,13 @@ const normalizeBranch = (value) => {
   return String(value || "").trim();
 };
 
-const getLatestYear = (colleges) => {
-  const years = colleges
-    .map((college) => college.year)
-    .filter((year) => Number.isFinite(Number(year)))
-    .map((year) => Number(year));
-
-  if (!years.length) {
+const resolveValidYear = (value) => {
+  const parsed = Number(value);
+  // Ignore unknown/placeholder year values like 0 so filtering does not hide valid results.
+  if (!Number.isFinite(parsed) || parsed < 2000) {
     return null;
   }
-
-  return Math.max(...years);
+  return parsed;
 };
 
 // Search colleges API backed by MongoDB
@@ -99,7 +117,7 @@ router.get("/search", async (req, res) => {
     }
 
     if (category) {
-      baseQuery.category = normalizeCategory(category === "GEN" ? "OPEN" : category);
+      baseQuery.category = normalizeCategory(category);
     }
 
     if (instituteType || collegeType) {
@@ -114,7 +132,7 @@ router.get("/search", async (req, res) => {
       baseQuery.round = { $regex: `^${escapeRegex(round)}$`, $options: "i" };
     }
 
-    let resolvedYear = Number.isFinite(Number(year)) ? Number(year) : null;
+    let resolvedYear = resolveValidYear(year);
 
     if (!resolvedYear) {
       const latestYearDoc = await College.find(baseQuery)
@@ -123,14 +141,14 @@ router.get("/search", async (req, res) => {
         .limit(1)
         .lean();
 
-      if (latestYearDoc.length && Number.isFinite(Number(latestYearDoc[0].year))) {
-        resolvedYear = Number(latestYearDoc[0].year);
+      if (latestYearDoc.length) {
+        resolvedYear = resolveValidYear(latestYearDoc[0].year);
       }
     }
 
     const finalQuery = {
       ...baseQuery,
-      ...(resolvedYear ? { year: resolvedYear } : {}),
+      ...(resolvedYear !== null ? { year: resolvedYear } : {}),
     };
 
     const [total, colleges] = await Promise.all([
@@ -171,12 +189,46 @@ router.post("/", async (req, res) => {
       branch,
     };
 
-    const matchedColleges = await College.find(baseQuery).sort({ year: -1, cutoffRank: 1 }).lean();
+    const latestYearDoc = await College.find(baseQuery)
+      .sort({ year: -1 })
+      .select("year")
+      .limit(1)
+      .lean();
 
-    const latestYear = getLatestYear(matchedColleges);
-    const colleges = latestYear
-      ? matchedColleges.filter((college) => Number(college.year) === latestYear)
-      : matchedColleges;
+    const latestYear = latestYearDoc.length
+      ? resolveValidYear(latestYearDoc[0].year)
+      : null;
+
+    const yearScopedBaseQuery = {
+      ...baseQuery,
+      ...(latestYear !== null ? { year: latestYear } : {}),
+    };
+
+    const findNearest = async (matchQuery, limit = 120) => College.aggregate([
+      { $match: matchQuery },
+      {
+        $addFields: {
+          rankGap: { $subtract: ["$cutoffRank", rank] },
+          rankGapAbs: { $abs: { $subtract: ["$cutoffRank", rank] } },
+        },
+      },
+      { $sort: { rankGapAbs: 1, cutoffRank: 1, name: 1 } },
+      { $limit: limit },
+    ]);
+
+    // Primary: same category + branch (and latest valid year when available).
+    let colleges = await findNearest(yearScopedBaseQuery, 140);
+
+    // Fallback: if exact category is too sparse, widen to same branch across categories.
+    let usedFallbackCategory = false;
+    if (colleges.length < 10) {
+      usedFallbackCategory = true;
+      const branchOnlyQuery = {
+        branch,
+        ...(latestYear !== null ? { year: latestYear } : {}),
+      };
+      colleges = await findNearest(branchOnlyQuery, 160);
+    }
 
     const safe = [];
     const target = [];
@@ -185,22 +237,26 @@ router.post("/", async (req, res) => {
     colleges
       .sort((left, right) => Number(left.cutoffRank) - Number(right.cutoffRank))
       .forEach((c) => {
-      const cutoff = c.cutoffRank;
+        const cutoff = Number(c.cutoffRank);
+        const delta = cutoff - rank;
 
-      if (rank <= cutoff - 2000) {
-        safe.push({ ...c, chance: "High" });
-      } else if (rank <= cutoff) {
-        target.push({ ...c, chance: "Medium" });
-      } else {
-        dream.push({ ...c, chance: "Low" });
-      }
+        if (delta >= 2500) {
+          safe.push({ ...c, chance: "High" });
+        } else if (delta >= -1500) {
+          target.push({ ...c, chance: "Medium" });
+        } else {
+          dream.push({ ...c, chance: "Low" });
+        }
       });
 
     res.json({
+      inputRank: rank,
       safe,
       target,
       dream,
       latestYear,
+      usedFallbackCategory,
+      categoryUsed: category,
     });
 
   } catch (err) {
