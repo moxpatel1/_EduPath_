@@ -31,6 +31,21 @@ app.use("/api/predict", predictRoutes);
 const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/edupath";
 const port = process.env.PORT || 5000;
 
+const inferInstituteType = (collegeName) => {
+  const normalized = String(collegeName || "").toLowerCase();
+  const governmentTokens = [
+    "ld college",
+    "vgec",
+    "gec",
+    "msu",
+    "svnit",
+  ];
+
+  return governmentTokens.some((token) => normalized.includes(token))
+    ? "Government"
+    : "Self-Finance";
+};
+
 const bootstrapCollegesIfEmpty = async () => {
   const collegeCount = await College.countDocuments({});
 
@@ -53,13 +68,15 @@ const bootstrapCollegesIfEmpty = async () => {
       branch: String(item.branch || "").trim(),
       category: String(item.category || "").trim().toUpperCase(),
       cutoffRank: Number(item.cutoffRank),
-      expectedCutoffRank: Number.isFinite(Number(item.expectedCutoffRank)) ? Number(item.expectedCutoffRank) : undefined,
+      expectedCutoffRank: Number.isFinite(Number(item.expectedCutoffRank))
+        ? Number(item.expectedCutoffRank)
+        : Number(item.cutoffRank),
       lastRank: Number.isFinite(Number(item.lastRank)) ? Number(item.lastRank) : undefined,
       city: String(item.city || "").trim(),
       year: Number.isFinite(Number(item.year)) ? Number(item.year) : undefined,
       round: String(item.round || "").trim(),
-      quota: String(item.quota || "").trim(),
-      instituteType: String(item.instituteType || "").trim(),
+      quota: String(item.quota || "ACPC").trim(),
+      instituteType: String(item.instituteType || inferInstituteType(item.name)).trim(),
     }))
     .filter((item) => item.name && item.branch && item.category && Number.isFinite(item.cutoffRank));
 
@@ -72,10 +89,51 @@ const bootstrapCollegesIfEmpty = async () => {
   console.log(`Bootstrapped ${sanitized.length} colleges from data/Colleges.json`);
 };
 
+const backfillCollegeFields = async () => {
+  const colleges = await College.find({}).select("name cutoffRank expectedCutoffRank quota instituteType").lean();
+
+  const operations = colleges
+    .map((college) => {
+      const set = {};
+
+      if (!Number.isFinite(Number(college.expectedCutoffRank))) {
+        set.expectedCutoffRank = Number(college.cutoffRank);
+      }
+
+      if (!String(college.quota || "").trim()) {
+        set.quota = "ACPC";
+      }
+
+      if (!String(college.instituteType || "").trim()) {
+        set.instituteType = inferInstituteType(college.name);
+      }
+
+      if (!Object.keys(set).length) {
+        return null;
+      }
+
+      return {
+        updateOne: {
+          filter: { _id: college._id },
+          update: { $set: set },
+        },
+      };
+    })
+    .filter(Boolean);
+
+  if (!operations.length) {
+    return;
+  }
+
+  await College.bulkWrite(operations, { ordered: false });
+  console.log(`Backfilled missing fields for ${operations.length} college records`);
+};
+
 mongoose.connect(mongoUri)
   .then(async () => {
     console.log("MongoDB Connected");
     await bootstrapCollegesIfEmpty();
+    await backfillCollegeFields();
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
