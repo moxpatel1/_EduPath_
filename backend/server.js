@@ -30,6 +30,8 @@ app.use("/api/predict", predictRoutes);
 
 const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/edupath";
 const port = process.env.PORT || 5000;
+const enableBootstrapSampleData = process.env.BOOTSTRAP_SAMPLE_DATA === "true";
+const enableFieldBackfill = process.env.BACKFILL_COLLEGE_FIELDS === "true";
 
 const inferInstituteType = (collegeName) => {
   const normalized = String(collegeName || "").toLowerCase();
@@ -132,8 +134,14 @@ const backfillCollegeFields = async () => {
 mongoose.connect(mongoUri)
   .then(async () => {
     console.log("MongoDB Connected");
-    await bootstrapCollegesIfEmpty();
-    await backfillCollegeFields();
+    if (enableBootstrapSampleData) {
+      await bootstrapCollegesIfEmpty();
+    }
+
+    if (enableFieldBackfill) {
+      await backfillCollegeFields();
+    }
+
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
