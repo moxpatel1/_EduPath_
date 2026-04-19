@@ -111,6 +111,13 @@ const Results = () => {
     [tableRows],
   );
 
+  useEffect(() => {
+    // If a user has only low-chance matches, automatically show them instead of an empty table.
+    if (resultScope === "recommended" && recommendedCount === 0 && tableRows.length > 0) {
+      setResultScope("all");
+    }
+  }, [resultScope, recommendedCount, tableRows.length]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -221,7 +228,9 @@ const Results = () => {
                 ) : (
                   <tr>
                     <td colSpan={11} className="px-3 py-8 text-center text-gray-500">
-                      No colleges found for selected college type filter.
+                      {tableRows.length > 0
+                        ? "No colleges found for selected filters. Try changing college type or result scope."
+                        : "No colleges found for your input. Try a different branch/category or rank."}
                     </td>
                   </tr>
                 )}
