@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: edupath-backend
+    runtime: node
+    startCommand: cd backend && npm start
+    buildCommand: cd backend && npm install
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: PORT
+        value: "5000"
