@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { buildApiUrl } from "../config/api";
 
 const Predictor = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Predictor = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/predict", {
+      const response = await fetch(buildApiUrl("/api/predict"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +61,7 @@ const Predictor = () => {
 
     } catch (error) {
       console.error(error);
-      alert("Server error. Make sure backend is running.");
+      alert("Server error. Unable to connect to backend.");
     } finally {
       setLoading(false);
     }
