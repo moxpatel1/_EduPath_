@@ -34,7 +34,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2 group">
               <img
-                src="/media/images/logo_1.png"
+                src="/logo_1.png"
                 className="h-10 w-auto object-contain"
                 alt="ACPC Predictor Logo"
               />
