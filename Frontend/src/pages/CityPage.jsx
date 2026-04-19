@@ -35,28 +35,87 @@ const cityData = {
         url: "http://www.aitindia.in",
       },
       {
+        name: "L.D. College of Engineering",
+        image: "https://tse2.mm.bing.net/th/id/OIP.GhlsYsqyaCqPcaBSsvG3GAHaFy?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Navrangpura, Ahmedabad, Gujarat",
+        contact: "ldce@ldce.ac.in | +91 79 2630 2887",
+        url: "https://ldce.ac.in",
+      },
+      {
+        name: "Vishwakarma Government Engineering College",
+        image: "https://www.vgecg.ac.in/uploads/photo-slide/67504b12799043%201.jpg",
+        description: "Location: Chandkheda, Ahmedabad, Gujarat",
+        contact: "info@vgec.ac.in | +91 79 2329 3866",
+        url: "https://vgecg.ac.in/",
+      },
+      {
+        name: "Shree Swaminarayan Institute of Technology",
+        image: "https://th.bing.com/th/id/OIP.e1RP8FqGl7uuvrvmv_CSfgHaEK?w=272&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+        description: "Location: Kalol, Gandhinagar, Gujarat",
+        contact: "info@ssit.ac.in | +91 2764 281 000",
+        url: "https://www.ssit.ac.in",
+      },
+      {
+        name: "L.J Institute of Engineering and Technology",
+        image: "https://tse3.mm.bing.net/th/id/OIP.Ncw9saHhaCWCW0sq735yswHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Sarkhej, Ahmedabad, Gujarat",
+        contact: "info@ljiet.edu.in | +91 79 2975 0000",
+        url: "https://www.ljiet.edu.in",
+      },
+      {
+        name: "SAL Engineering College",
+        image: "https://web.archive.org/web/20240726002420im_/https://www.sal.edu.in/wp-content/uploads/2018/06/seti_home-1-1024x390.png",
+        description: "Location: Sola, Ahmedabad, Gujarat",
+        contact: "info@sal.edu.in | +91 79 6522 4444",
+        url: "https://www.sal.edu.in",
+      },
+      { 
+        name: "Silver Oak University",
+        image: "https://mynursingadmission.com/uploads/college/122024/08842ecc633a6f19f8ad928f6e479eb3.jpg",
+        description: "Location: Gota, Ahmedabad, Gujarat",
+        contact: "info@silveroakuni.ac.in | +91 79 6604 6300",
+        url: "https://silveroakuni.ac.in",
+      }
+],
+  },
+  gandhinagar: {
+    title: "Engineering Colleges in Gandhinagar",
+    colleges: [
+      {
+        name: "Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT)",
+        image: "https://www.bing.com/th/id/OIP.qlmDec5CKNEZNgCcv3d7QAAAAA?w=193&h=151&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+        description: "Location: Reliance Township, Gandhinagar, Gujarat",
+        contact: "info@daiict.ac.in | +91 79 3051 0500",
+        url: "https://www.daiict.ac.in",
+      },
+      {
         name: "Indian Institute of Technology Gandhinagar",
         image: "https://img.jagranjosh.com/images/2022/April/1242022/416452_351420638258614_665024566_o.jpg",
         description: "Location: Chandkheda, Ahmedabad - 382424",
         contact: "info@iitgn.ac.in | +91 79 2326 2600",
         url: "https://iitgn.ac.in/",
       },
-    ],
-  },
-  gandhinagar: {
-    title: "Engineering Colleges in Gandhinagar",
-    colleges: [
-      {
+      {   
         name: "PDPU - Pandit Deendayal Petroleum University",
-        image: "https://via.placeholder.com/400x250?text=PDPU+-+Pandit+Deendayal+Petroleum+University",
-        description: "Branch: Computer Engineering | Cutoff Rank: 1500 | Fees: ₹1,90,000",
+        image: "https://tse4.mm.bing.net/th/id/OIP.mK6yv1Cgtqo9J33iM-zawgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Raisan, Gandhinagar, Gujarat",
         contact: "info@pdpu.ac.in | +91 98765 43214",
+        url: "https://pdeu.ac.in/"
       },
       {
+        name: "Gandhinagar Institute of Technology (GIT)",
+        image: "https://th.bing.com/th/id/OIP.I8bNhSRSPbWAWESsTzvxPgHaE8?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Moti Bhoyan, Gandhinagar, Gujarat",
+        contact: "info@git.org.in | +91 2764 281 900",
+        url: "https://git.gandhinagaruni.ac.in/",
+      },
+      
+      {
         name: "LDRP-ITR",
-        image: "https://via.placeholder.com/400x250?text=LDRP-ITR",
-        description: "Branch: Computer Engineering | Cutoff Rank: 4500 | Fees: ₹1,50,000",
-        contact: "admissions@ldrp.ac.in | +91 98765 43215",
+        image: "https://tse3.mm.bing.net/th/id/OIP.OvjtsRk67wwOphE4EuRp7gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Sector 15, Gandhinagar, Gujarat",
+        contact: "info@ldrp.ac.in | +91 79 2324 1492",
+        url: "https://www.ldrp.ac.in"
       },
     ],
   },
@@ -119,15 +178,33 @@ const cityData = {
     colleges: [
       {
         name: "SVIT - Vasantrao Narayan College",
-        image: "https://via.placeholder.com/400x250?text=SVIT+-+Vasantrao+Narayanan+College",
-        description: "Branch: Electronics & Communication | Cutoff Rank: 4200 | Fees: ₹1,20,000",
+        image: "https://tse1.mm.bing.net/th/id/OIP.-WuoUrDWiXqFAkn758c4BQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Surat, Gujarat",
         contact: "info@svitvasad.ac.in | +91 98765 43217",
+        url: "https://www.svitvasad.ac.in",
       },
       {
         name: "Govt Engineering College Surat",
-        image: "https://via.placeholder.com/400x250?text=Govt+Engineering+College+Surat",
-        description: "Branch: Civil Engineering | Cutoff Rank: 8500 | Fees: ₹56,000",
+        image: "https://tse1.mm.bing.net/th/id/OIP.EWvOQ1UgiWubv86y57uu0QAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Surat, Gujarat",
         contact: "principal@gecsurat.ac.in | +91 98765 43218",
+        url: "https://www.gecsurat.ac.in",
+      },
+      {
+        name: "Sardar Vallabhbhai National Institute of Technology (SVNIT)",
+        image: "https://static.toiimg.com/thumb/msid-89785574,width-1070,height-580,imgsize-1116300,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg",
+        description: "Location: Surat, Gujarat",
+        contact: "info@svnit.ac.in | +91 261 234 5678",
+        url: "https://www.svnit.ac.in",
+
+      },
+      {
+        name: "p.p Savani University",
+        image: "https://tse4.mm.bing.net/th/id/OIP.prHjONbf-h7uHHPTBnGHMAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Surat, Gujarat",
+        contact: "info@savaniuniversity.ac.in | +91 261 234 5678",
+        url: "https://www.savaniuniversity.ac.in",
+
       },
     ],
   },
@@ -135,11 +212,22 @@ const cityData = {
     title: "Engineering Colleges in Vadodara",
     colleges: [
       {
-        name: "Parul University",
-        image: "https://via.placeholder.com/400x250?text=Parul+University",
-        description: "Branch: Information Technology | Cutoff Rank: 6200 | Fees: ₹1,70,000",
-        contact: "admissions@paruluniversity.ac.in | +91 98765 43219",
+        name: "Maharaja Sayajirao University of Baroda",
+        image: "https://www.afaindia.com/img/top-design-institute/THE-MAHARAJA-SAYAJIRAO-UNIVERSITY-OF-BARODA.jpg",
+        description: "Location: Vadodara, Gujarat",
+        contact: "info@msub.edu | +91 265 234 5678",
+        url: "https://msubaroda.ac.in/",
+
+
       },
+      {
+        name: "Parul University",
+        image: "https://th.bing.com/th/id/OIP.xrjE_Fx45aLb_p2l_qidKwHaE8?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+        description: "Location: Vadodara, Gujarat",
+        contact: "admissions@paruluniversity.ac.in | +91 98765 43219",
+        url: "https://www.paruluniversity.ac.in",
+      },
+
     ],
   },
 };
