@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { buildApiUrl } from "../config/api";
 
 const Login = () => {
   const navigate = useNavigate();
-  const API_URL = "http://localhost:5000/api/auth";
+  const API_URL = buildApiUrl("/api/auth");
 
   const [form, setForm] = useState({
     email: "",
@@ -69,7 +70,7 @@ const Login = () => {
       }
 
     } catch (err) {
-      showMessage("Backend not running!", "error");
+      showMessage("Unable to connect to backend. Please try again.", "error");
     }
   };
 
