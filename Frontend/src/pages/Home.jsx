@@ -14,7 +14,7 @@ const Home = () => {
       <main className="relative w-full h-screen overflow-hidden">
 
         <img
-          src="/media/images/forntimage.jpg"
+          src="/forntimage.jpg"
           alt="Engineering College Campus"
           className="w-full h-full object-cover cursor-pointer"
         />
