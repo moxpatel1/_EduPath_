@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import College from "./models/College.js";
 import authRoutes from "./routes/auth.js";
 import predictRoutes from "./routes/predict.js";
+import instituteRoutes from "./routes/institutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,6 +28,7 @@ app.get("/health", (req, res) => {
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/predict", predictRoutes);
+app.use("/api/institutes", instituteRoutes);
 
 const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/edupath";
 const port = process.env.PORT || 5000;
