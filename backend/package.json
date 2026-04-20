@@ -3,7 +3,8 @@
   "scripts": {
     "start": "node server.js",
     "seed": "node scripts/importCutoffs.js",
-    "import:cutoffs": "node scripts/importCutoffs.js"
+    "import:cutoffs": "node scripts/importCutoffs.js",
+    "import:institutes": "node scripts/importInstitutes.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
