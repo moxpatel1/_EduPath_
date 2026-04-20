@@ -8,6 +8,8 @@ import Admission from "./pages/Admission";
 import Signup from "./pages/Signup";
 import Results from "./pages/Results";
 import CityPage from "./pages/CityPage";
+import Shortlist from "./pages/Shortlist";
+import Institutes from "./pages/Institutes";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 
@@ -100,6 +102,24 @@ function App() {
           element={
             <ProtectedRoute>
               <Results />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/shortlist"
+          element={
+            <ProtectedRoute>
+              <Shortlist />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/institutes"
+          element={
+            <ProtectedRoute>
+              <Institutes />
             </ProtectedRoute>
           }
         />
