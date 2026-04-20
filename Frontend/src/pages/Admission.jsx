@@ -1,293 +1,248 @@
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+const stats = [
+  { value: "200k+", label: "Annual Applicants", icon: "🧑‍🎓", accent: "from-blue-500 to-cyan-500" },
+  { value: "400+", label: "Participating Colleges", icon: "🏫", accent: "from-violet-500 to-fuchsia-500" },
+  { value: "75k+", label: "Total Seats", icon: "🎯", accent: "from-emerald-500 to-teal-500" },
+  { value: "3", label: "Counseling Rounds", icon: "🗓️", accent: "from-orange-500 to-amber-500" },
+];
 
-const Admission = () => {
+const processSteps = [
+  {
+    title: "JEE Main / GUJCET Examination",
+    description: "Appear for JEE Main or GUJCET. Your rank and percentile become the base for ACPC merit.",
+  },
+  {
+    title: "Registration on ACPC Portal",
+    description: "Register with valid details and complete profile information on the official ACPC portal.",
+  },
+  {
+    title: "Document Verification",
+    description: "Upload and verify marksheets, certificates, and category documents before deadline.",
+  },
+  {
+    title: "Choice Filling",
+    description: "Fill college and branch preferences in the right priority order based on realistic options.",
+  },
+  {
+    title: "Seat Allotment",
+    description: "Seats are allotted by rank, category, and preference in multiple counseling rounds.",
+  },
+  {
+    title: "Fee Payment and Reporting",
+    description: "Pay fees and report to allotted institute with all original documents in time.",
+  },
+];
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 m-0 p-0">
+const dates = [
+  { event: "JEE Main Session 1", date: "January 22-31, 2026", status: "Completed", tone: "bg-emerald-100 text-emerald-700" },
+  { event: "JEE Main Session 2", date: "April 1-15, 2026", status: "Completed", tone: "bg-emerald-100 text-emerald-700" },
+  { event: "ACPC Registration Opens", date: "May 20, 2026", status: "Scheduled", tone: "bg-slate-100 text-slate-700" },
+  { event: "Choice Filling", date: "June 10-25, 2026", status: "Scheduled", tone: "bg-slate-100 text-slate-700" },
+  { event: "Round 1 Allotment", date: "June 28, 2026", status: "Scheduled", tone: "bg-slate-100 text-slate-700" },
+  { event: "Round 2 Allotment", date: "July 10, 2026", status: "Scheduled", tone: "bg-slate-100 text-slate-700" },
+  { event: "Round 3 Allotment", date: "July 20, 2026", status: "Scheduled", tone: "bg-slate-100 text-slate-700" },
+];
 
-      <Navbar />
+const mandatoryDocs = [
+  "JEE Main / GUJCET Scorecard",
+  "10th Marksheet and Certificate",
+  "12th Marksheet and Certificate",
+  "School Leaving Certificate",
+  "Domicile Certificate",
+  "Aadhaar Card",
+  "Passport-size Photos",
+  "Character Certificate",
+];
 
-      <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20 px-6 text-center rounded-lg shadow-lg max-w-full mx-auto">
-        <h1 className="text-4xl font-bold mb-6">
-          Complete Admission Guide
-        </h1>
-        <p className="text-lg">
-          Your comprehensive guide to ACPC admission process for Engineerings colleges in Gujarat
-        </p>
-      </div>
+const categoryDocs = [
+  "Caste Certificate",
+  "Caste Validity",
+  "Non-Creamy Layer Certificate",
+  "Income Certificate",
+  "Disability Certificate",
+  "Sports Certificate",
+  "Defense Certificate",
+  "Migration Certificate",
+];
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
+const tips = [
+  {
+    title: "Choice Filling Strategy",
+    desc: "Fill more choices and keep dream, target, and safe options in the right order.",
+    color: "from-emerald-50 to-emerald-100 border-emerald-200",
+  },
+  {
+    title: "Never Miss Deadlines",
+    desc: "Set reminders for registration, choice filling, payment, and reporting dates.",
+    color: "from-blue-50 to-blue-100 border-blue-200",
+  },
+  {
+    title: "Documents First",
+    desc: "Keep all required certificates scanned and ready before portal steps begin.",
+    color: "from-amber-50 to-amber-100 border-amber-200",
+  },
+  {
+    title: "Seat Acceptance",
+    desc: "After allotment, complete payment and college reporting within the allowed window.",
+    color: "from-rose-50 to-rose-100 border-rose-200",
+  },
+];
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-red-500 rounded-lg p-4">
-          <div className="text-blue-500 text-4xl mb-4">👤</div>
-          <h2 className="text-xl font-semibold mb-2">200k+</h2>
-          <h3 className="text-gray-600">Annual Applicants</h3>
-        </div>
+const Admission = () => (
+  <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100">
+    <Navbar />
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-blue-500 rounded-lg p-4">
-          <div className="text-green-500 text-4xl mb-4">🎓</div>
-          <h2 className="text-xl font-semibold mb-2">400+</h2>
-          <h3 className="text-gray-600">Colleges</h3>
-        </div>
+    <main className="max-w-7xl mx-auto px-4 md:px-8 pb-16">
+      <section className="relative overflow-hidden mt-8 rounded-3xl bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white shadow-2xl">
+        <div className="absolute -top-20 -right-16 w-64 h-64 rounded-full bg-cyan-400/20 blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-10 w-72 h-72 rounded-full bg-violet-400/20 blur-3xl"></div>
 
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-green-500 rounded-lg p-4">
-          <div className="text-purple-500 text-4xl mb-4">🏅</div>
-          <h2 className="text-xl font-semibold mb-2">75k+</h2>
-          <h3 className="text-gray-600">Total Seats</h3>
-        </div>
-
-        <div className="bg-white shadow-md text-center max-w-sm border-t-4 border-yellow-500 rounded-lg p-4">
-          <div className="text-orange-500 text-4xl mb-4">⏰</div>
-          <h2 className="text-xl font-semibold mb-2">3 Rounds</h2>
-          <h3 className="text-gray-600">Counseling Rounds</h3>
-        </div>
-
-      </div>
-
-      <div className="p-6 bg-white shadow-md rounded-lg">
-        <h3 className="text-4xl flex justify-start font-bold">
-          📚 Step-by-Step Admission Process
-        </h3>
-      </div>
-
-      <div className="ml-20 mr-20 mb-4 mt-4">
-
-        {/* STEP 1 */}
-        <div className="max-w-full border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
-          <div className="flex justify-between items-center gap-6">
-            <div className="p-5">
-              <h4 className="text-xl font-semibold">1</h4>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">JEE Main / GUJCET Examination</h3>
-              <h5 className="text-gray-500">
-                Appear for JEE Main (for Engineering) or GUJCET (Gujarat Common Entrance Test). Your percentile/rank will be the basis for admission.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 2 */}
-        <div className="mt-4 max-w-full hover:shadow-xl border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
-          <div className="flex justify-between items-center gap-6">
-            <div className="p-5">
-              <h4 className="text-xl font-semibold">2</h4>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">Registration on ACPC Portal</h3>
-              <h5 className="text-gray-500">
-                Register on the official ACPC website with valid credentials. Fill in personal, academic, and contact details accurately.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 3 */}
-        <div className="mt-4 max-w-full hover:shadow-xl border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
-          <div className="flex justify-between items-center gap-6">
-            <div className="p-5">
-              <h4 className="text-xl font-semibold">3</h4>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">Document Verification</h3>
-              <h5 className="text-gray-500">
-                Upload and verify all required documents including mark sheets, caste certificate (if applicable), domicile certificate, etc.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 4 */}
-        <div className="mt-4 max-w-full hover:shadow-xl border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
-          <div className="flex justify-between items-center gap-6">
-            <div className="p-5">
-              <h4 className="text-xl font-semibold">4</h4>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">Choice Filling</h3>
-              <h5 className="text-gray-500">
-                Fill your college and branch preferences carefully. You can fill up to 1000+ choices based on your rank and category.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 5 */}
-        <div className="mt-4 max-w-full hover:shadow-xl border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
-          <div className="flex justify-between items-center gap-6">
-            <div className="p-5">
-              <h4 className="text-xl font-semibold">5</h4>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">Seat Allotment</h3>
-              <h5 className="text-gray-500">
-                Based on your rank, category, and choices, seats are allotted in multiple rounds. Check results on the ACPC portal.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 6 */}
-        <div className="mt-4 max-w-full hover:shadow-xl border-l-4 border-blue-500 rounded-lg p-4 bg-white shadow">
-          <div className="flex justify-between items-center gap-6">
-            <div className="p-5">
-              <h4 className="text-xl font-semibold">6</h4>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">Fee Payment & Reporting</h3>
-              <h5 className="text-gray-500">
-                Pay the admission fee online and report to the allotted college within the specified deadline with original documents.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      {/* IMPORTANT DATES */}
-      <div className="m-10 mx-10 rounded-lg">
-        <h3 className="text-4xl font-bold">🗓️ Important Dates (Tentative)</h3>
-      </div>
-
-      <div className="overflow-x-auto ml-20 mr-20 mt-4 rounded-lg">
-        <table className="min-w-full border border-gray-300 divide-y divide-gray-200">
-          <thead>
-            <tr className="bg-blue-500 h-14 text-white">
-              <th className="px-4 py-2 text-left">Event</th>
-              <th className="px-4 py-2 text-left">Date</th>
-              <th className="px-4 py-2 text-left">Status</th>
-            </tr>
-          </thead>
-
-          <tbody className="divide-y divide-gray-200">
-            <tr className="h-14">
-              <td className="px-4 py-2">JEE Main Session 1</td>
-              <td>January 22–31, 2026</td>
-              <td><span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">Upcoming</span></td>
-            </tr>
-
-            <tr className="h-14">
-              <td className="px-4 py-2">JEE Main Session 2</td>
-              <td>April 1–15, 2026</td>
-              <td><span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Scheduled</span></td>
-            </tr>
-
-            <tr className="h-14">
-              <td className="px-4 py-2">ACPC Registration Opens</td>
-              <td>May 20, 2026</td>
-              <td><span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Scheduled</span></td>
-            </tr>
-
-            <tr className="h-14">
-              <td className="px-4 py-2">Choice Filling Begins</td>
-              <td>June 10–25, 2026</td>
-              <td><span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Scheduled</span></td>
-            </tr>
-
-            <tr className="h-14">
-              <td className="px-4 py-2">Round 1 Allotment</td>
-              <td>June 28, 2026</td>
-              <td><span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Scheduled</span></td>
-            </tr>
-
-            <tr className="h-14">
-              <td className="px-4 py-2">Round 2 Allotment</td>
-              <td>July 10, 2026</td>
-              <td><span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Scheduled</span></td>
-            </tr>
-
-            <tr className="h-14">
-              <td className="px-4 py-2">Round 3 Allotment</td>
-              <td>July 20, 2026</td>
-              <td><span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Scheduled</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* DOCUMENTS */}
-      <div className="p-6">
-        <h3 className="text-4xl font-bold">📃 Required Documents</h3>
-      </div>
-
-      <div className="flex justify-center space-x-4 mt-4">
-
-        <div className="bg-white rounded-lg shadow-md max-w-lg p-10">
-          <h3 className="text-lg font-semibold mb-3">✅ Mandatory Documents</h3>
-          <ul className="space-y-1">
-            <li>✅ JEE Main / GUJCET Scorecard</li>
-            <li>✅ 10th Mark Sheet & Certificate</li>
-            <li>✅ 12th Mark Sheet & Certificate</li>
-            <li>✅ School Leaving Certificate</li>
-            <li>✅ Domicile Certificate</li>
-            <li>✅ Aadhar Card</li>
-            <li>✅ Passport Photos</li>
-            <li>✅ Character Certificate</li>
-          </ul>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-md max-w-lg p-10">
-          <h3 className="text-lg font-semibold mb-3">❗Category-Based Documents</h3>
-          <ul className="space-y-1">
-            <li>❗Caste Certificate</li>
-            <li>❗Caste Validity</li>
-            <li>❗Non-Creamy Layer</li>
-            <li>❗Income Certificate</li>
-            <li>❗Disability Certificate</li>
-            <li>❗Sports Certificate</li>
-            <li>❗Defense Certificate</li>
-            <li>❗Migration Certificate</li>
-          </ul>
-        </div>
-
-      </div>
-
-      {/* TIPS */}
-      <div className="p-6 mx-4 m-4">
-        <h3 className="text-4xl font-bold">Important Tips & Guidelines</h3>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-
-        <div className="bg-green-100 rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold mb-2">Choice Filling Strategy</h3>
-          <p className="text-sm">
-            Fill maximum choices (1000+) in order of your true preference.
+        <div className="relative px-6 py-14 md:px-12 md:py-16 text-center">
+          <p className="inline-flex items-center px-4 py-1 rounded-full bg-white/15 border border-white/25 text-sm tracking-wide mb-5">
+            ACPC 2026 Roadmap
           </p>
+          <h1 className="text-3xl md:text-5xl font-black leading-tight">
+            Complete Admission Guidance
+          </h1>
+          <p className="mt-4 text-blue-100 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+            Step-by-step support for Gujarat engineering admissions, from exam planning to seat confirmation.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/predict"
+              className="px-7 py-3 rounded-full bg-white text-blue-800 font-bold shadow-lg"
+            >
+              Start Prediction
+            </Link>
+            <a
+              href="#timeline"
+              className="px-7 py-3 rounded-full border border-white/40 bg-white/10 font-semibold"
+            >
+              View Timeline
+            </a>
+          </div>
         </div>
+      </section>
 
-        <div className="bg-blue-100 rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold mb-2">Meet Deadlines</h3>
-          <p className="text-sm">Never miss deadlines.</p>
+      <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+        {stats.map((item) => (
+          <article key={item.label} className="rounded-2xl bg-white/90 border border-white shadow-lg p-5">
+            <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${item.accent} text-white flex items-center justify-center text-2xl`}>
+              {item.icon}
+            </div>
+            <h2 className="mt-4 text-2xl md:text-3xl font-extrabold text-slate-900">{item.value}</h2>
+            <p className="text-sm md:text-base text-slate-600 mt-1">{item.label}</p>
+          </article>
+        ))}
+      </section>
+
+      <section id="timeline" className="mt-12">
+        <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900">Step-by-Step Process</h3>
+        <p className="mt-2 text-slate-600">Follow this sequence to avoid missed steps and last-minute issues.</p>
+
+        <div className="mt-8 space-y-5">
+          {processSteps.map((step, index) => (
+            <article key={step.title} className="relative rounded-2xl bg-white border border-slate-200 shadow-sm p-5 md:p-6">
+              <div className="flex gap-4 md:gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center">
+                    {index + 1}
+                  </div>
+                  {index !== processSteps.length - 1 && <div className="w-0.5 h-full bg-blue-200 mt-2"></div>}
+                </div>
+
+                <div className="flex-1 pb-1">
+                  <h4 className="text-xl md:text-2xl font-bold text-slate-900">{step.title}</h4>
+                  <p className="mt-2 text-slate-600 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
+      </section>
 
-        <div className="bg-yellow-100 rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold mb-2">Document Verification</h3>
-          <p className="text-sm">Keep documents ready.</p>
+      <section className="mt-12">
+        <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900">Important Dates</h3>
+        <p className="mt-2 text-slate-600">Tentative timeline for planning your admission tasks.</p>
+
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <table className="min-w-full">
+            <thead>
+              <tr className="bg-slate-900 text-white">
+                <th className="px-5 py-4 text-left font-semibold">Event</th>
+                <th className="px-5 py-4 text-left font-semibold">Date</th>
+                <th className="px-5 py-4 text-left font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dates.map((row) => (
+                <tr key={row.event} className="border-t border-slate-100">
+                  <td className="px-5 py-4 text-slate-800 font-medium">{row.event}</td>
+                  <td className="px-5 py-4 text-slate-600">{row.date}</td>
+                  <td className="px-5 py-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${row.tone}`}>{row.status}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+      </section>
 
-        <div className="bg-red-100 rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold mb-2">Seat Acceptance</h3>
-          <p className="text-sm">Accept seat and pay fees.</p>
+      <section className="mt-12 grid md:grid-cols-2 gap-6">
+        <article className="rounded-2xl bg-white border border-emerald-200 shadow-sm p-6">
+          <h3 className="text-2xl font-bold text-emerald-800">Mandatory Documents</h3>
+          <ul className="mt-4 space-y-2 text-slate-700">
+            {mandatoryDocs.map((doc) => (
+              <li key={doc}>✅ {doc}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="rounded-2xl bg-white border border-amber-200 shadow-sm p-6">
+          <h3 className="text-2xl font-bold text-amber-800">Category-Based Documents</h3>
+          <ul className="mt-4 space-y-2 text-slate-700">
+            {categoryDocs.map((doc) => (
+              <li key={doc}>❗ {doc}</li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
+      <section className="mt-12">
+        <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900">Tips and Guidelines</h3>
+        <div className="mt-6 grid sm:grid-cols-2 gap-5">
+          {tips.map((tip) => (
+            <article key={tip.title} className={`rounded-2xl border p-5 bg-gradient-to-br ${tip.color} shadow-sm`}>
+              <h4 className="text-lg font-bold text-slate-900">{tip.title}</h4>
+              <p className="mt-2 text-slate-700">{tip.desc}</p>
+            </article>
+          ))}
         </div>
+      </section>
 
-      </div>
+      <section className="mt-12 rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-white shadow-xl overflow-hidden relative">
+        <div className="absolute -top-14 right-0 w-52 h-52 bg-white/10 rounded-full blur-2xl"></div>
+        <div className="absolute -bottom-16 left-6 w-52 h-52 bg-cyan-300/20 rounded-full blur-2xl"></div>
 
-      {/* CTA */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-lg p-10 text-center mt-4">
-        <h2 className="text-2xl font-bold mb-4">
-          Ready to Predict Your Rank?
-        </h2>
-
-        <Link to="/predict" className="bg-white text-blue-700 px-6 py-2 rounded-md">
-          Predict Your Rank
-        </Link>
-      </div>
-
-    </div>
-  );
-};
+        <div className="relative p-8 md:p-12 text-center">
+          <h2 className="text-2xl md:text-4xl font-black">Ready to Predict Your Best Colleges?</h2>
+          <p className="mt-3 text-blue-100 max-w-2xl mx-auto">
+            Use your rank, branch, and category to explore realistic admission chances instantly.
+          </p>
+          <div className="mt-7">
+            <Link
+              to="/predict"
+              className="inline-flex px-8 py-3 rounded-full bg-white text-blue-800 font-bold shadow-lg"
+            >
+              Go to Predictor
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+);
 
 export default Admission;
