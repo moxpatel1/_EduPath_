@@ -56,6 +56,12 @@ const Navbar = () => {
             <Link to="/fees" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
               Fees
             </Link>
+            <Link to="/institutes" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
+              Institutes
+            </Link>
+            <Link to="/shortlist" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
+              Shortlist
+            </Link>
           </div>
 
           {/* Auth Section */}
@@ -121,6 +127,12 @@ const Navbar = () => {
             </Link>
             <Link to="/fees" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Fees
+            </Link>
+            <Link to="/institutes" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
+              Institutes
+            </Link>
+            <Link to="/shortlist" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
+              Shortlist
             </Link>
 
             <div className="border-t border-gray-200 pt-4 mt-4">
