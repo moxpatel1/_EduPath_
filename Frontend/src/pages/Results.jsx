@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const normalizeInstituteType = (value) => {
@@ -43,12 +44,39 @@ const getChancePriority = (chance) => {
   return 2;
 };
 
+const SHORTLIST_STORAGE_KEY = "shortlistedColleges";
+
+const buildShortlistId = (college) => (
+  college._id
+  || `${college.name}-${college.branch}-${college.category}-${college.year || "na"}-${college.round || "na"}`
+);
+
+const readShortlistFromStorage = () => {
+  try {
+    const raw = localStorage.getItem(SHORTLIST_STORAGE_KEY);
+    const parsed = JSON.parse(raw || "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const writeShortlistToStorage = (items) => {
+  localStorage.setItem(SHORTLIST_STORAGE_KEY, JSON.stringify(items));
+};
+
 const Results = () => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [collegeTypeFilter, setCollegeTypeFilter] = useState("all");
   const [resultScope, setResultScope] = useState("recommended");
+  const [shortlistedIds, setShortlistedIds] = useState(new Set());
+
+  useEffect(() => {
+    const existing = readShortlistFromStorage();
+    setShortlistedIds(new Set(existing.map((item) => item.shortlistId)));
+  }, []);
 
   useEffect(() => {
     const storedResult = localStorage.getItem("predictionResult");
@@ -111,6 +139,30 @@ const Results = () => {
     [tableRows],
   );
 
+  const toggleShortlist = (college) => {
+    const shortlistId = buildShortlistId(college);
+    const existing = readShortlistFromStorage();
+    const exists = existing.some((item) => item.shortlistId === shortlistId);
+
+    if (exists) {
+      const updated = existing.filter((item) => item.shortlistId !== shortlistId);
+      writeShortlistToStorage(updated);
+      setShortlistedIds(new Set(updated.map((item) => item.shortlistId)));
+      return;
+    }
+
+    const toSave = {
+      shortlistId,
+      ...college,
+      instituteTypeLabel: normalizeInstituteType(college.instituteType),
+      savedAt: new Date().toISOString(),
+    };
+
+    const updated = [toSave, ...existing];
+    writeShortlistToStorage(updated);
+    setShortlistedIds(new Set(updated.map((item) => item.shortlistId)));
+  };
+
   useEffect(() => {
     // If a user has only low-chance matches, automatically show them instead of an empty table.
     if (resultScope === "recommended" && recommendedCount === 0 && tableRows.length > 0) {
@@ -151,11 +203,16 @@ const Results = () => {
 
         <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-            <p className="text-gray-600 text-sm md:text-base">
-              {resultScope === "recommended"
-                ? `Showing recommended colleges (High + Medium chance). Count: ${recommendedCount}`
-                : "Showing all colleges including low chance options"}
-            </p>
+            <div>
+              <p className="text-gray-600 text-sm md:text-base">
+                {resultScope === "recommended"
+                  ? `Showing recommended colleges (High + Medium chance). Count: ${recommendedCount}`
+                  : "Showing all colleges including low chance options"}
+              </p>
+              <p className="text-sm text-blue-700 mt-1">
+                Shortlisted: {shortlistedIds.size}. <Link to="/shortlist" className="font-semibold underline">Open Shortlist</Link>
+              </p>
+            </div>
 
             <div className="flex items-center gap-3">
               <label htmlFor="resultScope" className="text-sm font-medium text-gray-700">
@@ -202,12 +259,17 @@ const Results = () => {
                   <th className="px-3 py-3 font-semibold">Expected Cutoff Rank</th>
                   <th className="px-3 py-3 font-semibold">Last Rank</th>
                   <th className="px-3 py-3 font-semibold">Chance</th>
+                  <th className="px-3 py-3 font-semibold">Shortlist</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredRows.length > 0 ? (
-                  filteredRows.map((college) => (
-                    <tr key={college._id || `${college.name}-${college.branch}-${college.category}-${college.cutoffRank}`} className="border-t border-gray-100 even:bg-slate-50">
+                  filteredRows.map((college) => {
+                    const shortlistId = buildShortlistId(college);
+                    const isSaved = shortlistedIds.has(shortlistId);
+
+                    return (
+                      <tr key={college._id || `${college.name}-${college.branch}-${college.category}-${college.cutoffRank}`} className="border-t border-gray-100 even:bg-slate-50">
                       <td className="px-3 py-3 text-gray-800 min-w-[300px]">{showValue(college.name)}</td>
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.branch)}</td>
                       <td className="px-3 py-3 text-gray-700 whitespace-nowrap">{showValue(college.category)}</td>
@@ -223,11 +285,25 @@ const Results = () => {
                           {college.chance}
                         </span>
                       </td>
+                      <td className="px-3 py-3 whitespace-nowrap">
+                        <button
+                          type="button"
+                          onClick={() => toggleShortlist(college)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold border ${
+                            isSaved
+                              ? "bg-emerald-50 text-emerald-700 border-emerald-300"
+                              : "bg-white text-blue-700 border-blue-300"
+                          }`}
+                        >
+                          {isSaved ? "Saved" : "Save"}
+                        </button>
+                      </td>
                     </tr>
-                  ))
+                    );
+                  })
                 ) : (
                   <tr>
-                    <td colSpan={11} className="px-3 py-8 text-center text-gray-500">
+                    <td colSpan={12} className="px-3 py-8 text-center text-gray-500">
                       {tableRows.length > 0
                         ? "No colleges found for selected filters. Try changing college type or result scope."
                         : "No colleges found for your input. Try a different branch/category or rank."}
