@@ -230,7 +230,7 @@ const Home = () => {
             <ul className="space-y-3">
               <li><Link to="/predict" className="text-gray-400 hover:text-white flex items-center"><span className="mr-2">→</span>College Predictor</Link></li>
               <li><Link to="/admission" className="text-gray-400 hover:text-white flex items-center"><span className="mr-2">→</span>Admission Guide</Link></li>
-              <li><Link to="/fees" className="text-gray-400 hover:text-white flex items-center"><span className="mr-2">→</span>Fee Structure</Link></li>
+              <li><Link to="/fees" className="text-gray-400 hover:text-white flex items-center"><span className="mr-2">→</span>Fees/Scholarship</Link></li>
               <li><Link to="/results" className="text-gray-400 hover:text-white flex items-center"><span className="mr-2">→</span>Results</Link></li>
             </ul>
           </div>
