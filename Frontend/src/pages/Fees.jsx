@@ -13,9 +13,9 @@ const Fees = () => {
         <div className="max-w-6xl mx-auto">
 
           <div className="text-center">
-            <h1 className="text-4xl font-extrabold">Fees Comparison</h1>
+            <h1 className="text-4xl font-extrabold">Fees/Scholarship</h1>
             <p className="mt-2 text-slate-500">
-              Compare fees across government and private engineering colleges in Gujarat
+              Compare fees and explore scholarship support for engineering colleges in Gujarat
             </p>
           </div>
 
