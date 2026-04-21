@@ -299,7 +299,7 @@ const CityPage = ({ cityKey }) => {
             <h2 className="text-white mb-4">Quick Links</h2>
             <ul className="space-y-2">
               <li><Link to="/predict" className="hover:text-white transition">College Predictor</Link></li>
-              <li><Link to="/fees" className="hover:text-white transition">Fees Comparison</Link></li>
+              <li><Link to="/fees" className="hover:text-white transition">Fees/Scholarship</Link></li>
               <li><Link to="/admission" className="hover:text-white transition">Admission Guide</Link></li>
               <li><Link to="/" className="hover:text-white transition">Home</Link></li>
             </ul>
