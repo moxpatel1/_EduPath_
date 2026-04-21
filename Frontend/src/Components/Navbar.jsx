@@ -54,7 +54,7 @@ const Navbar = () => {
               Admission Guide
             </Link>
             <Link to="/fees" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
-              Fees
+              Fees/Scholarship
             </Link>
             <Link to="/institutes" className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium">
               Institutes
@@ -126,7 +126,7 @@ const Navbar = () => {
               Admission Guide
             </Link>
             <Link to="/fees" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
-              Fees
+              Fees/Scholarship
             </Link>
             <Link to="/institutes" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Institutes
